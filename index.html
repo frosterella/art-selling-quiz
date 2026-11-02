@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Where Should You Sell Your Art?</title>
+<meta name="description" content="A ten-question personality quiz for artists and makers: find the place to sell your work that suits you best.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap">
+<style>
+/* Same mid-century studio look as The Profitable Artist Equation: warm paper, a brown masthead card, mustard/teal/orange/olive shapes. */
+:root {
+  --bg: #F4EDE1; --surface: #FFFBF4; --ink: #2A2320; --muted: #6B5F57; --line: #E4D8C6;
+  --teal: #1F6F6B; --mustard: #E2A72E; --orange: #C4572C; --olive: #74863A; --plum: #7B4B6E; --rose: #B8575F;
+  --accent: #1F6F6B; --accent-soft: #E0EEEB; --on-accent: #FFFBF4;
+  --mast: #4A3227; --mast-ink: #FBF2E2; --pick: #FCF1D4; --pick-line: #E2A72E;
+  --font: "Jost", "Futura", "Century Gothic", "Avenir Next", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #1C1815; --surface: #26201C; --ink: #F1E7D7; --muted: #B2A595; --line: #3A322B;
+  --teal: #5DB1A9; --mustard: #E8B54C; --orange: #E27B52; --olive: #A3B65E; --plum: #C08AB3; --rose: #E38A90;
+  --accent: #5DB1A9; --accent-soft: #1E3533; --on-accent: #1C1815;
+  --mast: #3B281F; --mast-ink: #FBF2E2; --pick: #352C1C; --pick-line: #E8B54C;
+  color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --bg: #1C1815; --surface: #26201C; --ink: #F1E7D7; --muted: #B2A595; --line: #3A322B;
+  --teal: #5DB1A9; --mustard: #E8B54C; --orange: #E27B52; --olive: #A3B65E; --plum: #C08AB3; --rose: #E38A90;
+  --accent: #5DB1A9; --accent-soft: #1E3533; --on-accent: #1C1815;
+  --mast: #3B281F; --mast-ink: #FBF2E2; --pick: #352C1C; --pick-line: #E8B54C;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.55; min-height: 100vh; }
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+h1, h2, h3 { margin: 0; line-height: 1.12; text-wrap: balance; font-weight: 600; }
+p { margin: 0; }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--mustard); outline-offset: 3px; }
+
+.stage { max-width: 760px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; padding-block: 20px 40px; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+.screen { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 22px; animation: enter .45s ease both; }
+@keyframes enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.screen.top { justify-content: flex-start; }
+
+/* shared mid-century card */
+.card { position: relative; overflow: hidden; isolation: isolate; background: var(--mast); color: var(--mast-ink); border-radius: 24px; padding: clamp(26px, 6vw, 48px); display: grid; gap: 16px; }
+.byline { color: var(--mustard); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; }
+.card h1 { font-size: clamp(34px, 7.5vw, 56px); letter-spacing: -0.01em; max-width: 14ch; }
+.card .lede { font-size: 18px; opacity: .9; max-width: 50ch; }
+.shape { position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; }
+.s-sun { width: 240px; height: 240px; right: -70px; top: -90px; background: var(--mustard); }
+.s-arc { width: 190px; height: 190px; right: 120px; bottom: -130px; background: var(--teal); }
+.s-dot { width: 50px; height: 50px; right: 96px; top: 40px; border: 7px solid var(--orange); }
+@media (max-width: 560px) { .s-sun { width: 150px; height: 150px; right: -70px; top: -80px; } .s-arc { width: 130px; height: 130px; right: 30px; bottom: -100px; } .s-dot { width: 36px; height: 36px; right: 50px; top: 66px; border-width: 5px; } .card .byline { padding-right: 70px; } }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; opacity: .85; }
+.meta span::before { content: "●"; color: var(--mustard); margin-right: 8px; font-size: 10px; vertical-align: 2px; }
+
+.btn { border: 0; border-radius: 999px; padding: 14px 28px; font-weight: 600; font-size: 17px; background: var(--mustard); color: #2A2320; justify-self: start; transition: transform .15s; }
+.btn:hover { transform: translateY(-1px); }
+a.btn { text-decoration: none; display: inline-block; }
+.btn.dark { background: var(--ink); color: var(--bg); }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--line); }
+.linkish { background: none; border: 0; padding: 6px 0; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; font-size: 15px; }
+
+/* question screens */
+.progress { display: grid; gap: 8px; }
+.progress-top { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: var(--muted); font-weight: 500; }
+.bar { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--teal); border-radius: 99px; transition: width .5s ease; }
+.art { width: 100%; max-width: 360px; aspect-ratio: 16 / 9; margin: 0 auto; }
+.art svg { width: 100%; height: 100%; display: block; }
+.photo { width: 100%; max-height: 300px; object-fit: cover; border-radius: 18px; }
+.question:focus { outline: none; }
+.qnum { font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.question { font-size: clamp(25px, 5vw, 34px); }
+.answers { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.answer { width: 100%; display: grid; grid-template-columns: 40px minmax(0, 1fr); align-items: center; gap: 14px; text-align: left; background: var(--surface); color: var(--ink); border: 2px solid var(--line); border-radius: 16px; padding: 14px 18px 14px 14px; font-size: 17px; line-height: 1.4; transition: border-color .15s, background .15s, transform .15s; }
+.answer:hover { border-color: var(--mustard); transform: translateX(3px); }
+.answer .key { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; background: var(--bg); color: var(--muted); transition: background .15s, color .15s; }
+.answer.chosen { border-color: var(--pick-line); background: var(--pick); }
+.answer.chosen .key { background: var(--mustard); color: #2A2320; }
+.qfoot { display: flex; justify-content: space-between; align-items: center; min-height: 36px; }
+.hint { font-size: 13px; color: var(--muted); }
+@media (hover: none) { .hint { display: none; } }
+
+/* breather + matching */
+.center { text-align: center; justify-items: center; }
+.center .lede { margin-inline: auto; }
+.center .btn { justify-self: center; }
+.orbit { width: 120px; height: 120px; position: relative; margin: 0 auto; }
+.orbit span { position: absolute; border-radius: 50%; animation: pulse 1.4s ease-in-out infinite; }
+.orbit span:nth-child(1) { inset: 0; background: var(--mustard); }
+.orbit span:nth-child(2) { width: 56px; height: 56px; left: -10px; bottom: -6px; background: var(--teal); animation-delay: .2s; }
+.orbit span:nth-child(3) { width: 34px; height: 34px; right: -8px; top: -4px; border: 6px solid var(--orange); animation-delay: .4s; }
+@keyframes pulse { 50% { transform: scale(.82); } }
+.status { font-size: 18px; color: var(--muted); min-height: 1.6em; text-align: center; }
+
+/* email step */
+form { display: grid; gap: 12px; }
+label { font-weight: 600; font-size: 14px; }
+.field { display: grid; gap: 6px; }
+input[type=text], input[type=email] { font: inherit; font-size: 17px; padding: 12px 14px; border-radius: 12px; border: 2px solid transparent; background: var(--mast-ink); color: #2A2320; width: 100%; }
+input:focus { outline: none; border-color: var(--mustard); }
+.small { font-size: 13px; opacity: .8; }
+.err { color: var(--mustard); font-size: 14px; min-height: 1.3em; }
+.card .linkish { color: var(--mast-ink); opacity: .75; justify-self: start; }
+
+/* result */
+.hero { --oc: var(--teal); }
+.hero .s-sun { background: var(--oc); }
+.hero .s-arc { background: var(--mustard); }
+.you-are { font-size: 15px; opacity: .85; }
+.hero h1 { max-width: none; }
+.place { display: inline-block; justify-self: start; background: var(--oc); color: #FFFBF4; font-weight: 600; padding: 6px 14px; border-radius: 999px; font-size: 15px; }
+.tagline { font-size: clamp(19px, 3.6vw, 23px); font-weight: 500; max-width: 34ch; }
+.panel { background: var(--surface); border-radius: 20px; padding: clamp(20px, 4vw, 32px); display: grid; gap: 14px; box-shadow: 0 0 0 1px var(--line); }
+.panel h2 { font-size: clamp(21px, 3.4vw, 25px); }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chips li { background: var(--bg); padding: 6px 13px; border-radius: 999px; font-size: 15px; font-weight: 500; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 620px) { .two { grid-template-columns: 1fr; } }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 14px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; align-items: start; }
+.steps li::before { content: counter(s); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--teal); color: var(--on-accent); font-weight: 600; }
+.mix { display: grid; gap: 10px; }
+.mix-row { display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr) 44px; gap: 12px; align-items: center; font-size: 15px; }
+.mix-row .track { height: 12px; background: var(--bg); border-radius: 99px; overflow: hidden; }
+.mix-row .track i { display: block; height: 100%; border-radius: 99px; width: 0; transition: width .9s cubic-bezier(.2,.8,.2,1); }
+.mix-row b { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+.mix-row.top span { font-weight: 600; }
+@media (max-width: 520px) { .mix-row { grid-template-columns: minmax(0, 1fr) 44px; } .mix-row .track { grid-column: 1 / -1; grid-row: 2; } }
+.upsell { --oc: var(--teal); background: var(--surface); border-radius: 20px; padding: clamp(22px, 4vw, 34px); display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 22px; align-items: center; box-shadow: inset 0 0 0 3px var(--oc); }
+.upsell .book { width: 110px; aspect-ratio: 3 / 4; border-radius: 6px 12px 12px 6px; background: var(--oc); position: relative; overflow: hidden; box-shadow: 6px 6px 0 var(--line); }
+.upsell .book::before { content: ""; position: absolute; width: 90px; height: 90px; border-radius: 50%; background: var(--mustard); right: -30px; top: -26px; }
+.upsell .book::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 16px; height: 6px; border-radius: 3px; background: #FFFBF4; opacity: .8; box-shadow: 0 -12px 0 #FFFBF4; }
+.upsell .u-body { display: grid; gap: 10px; }
+.upsell .price { font-weight: 700; font-size: 22px; }
+.upsell .btn { background: var(--oc); color: #FFFBF4; }
+@media (max-width: 520px) { .upsell { grid-template-columns: 1fr; } }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.toast { font-size: 14px; color: var(--accent); font-weight: 500; }
+footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 28px; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<main class="stage" id="stage" aria-live="polite"></main>
+
+<script src="quiz-data.js"></script>
+<script src="scoring.js"></script>
+<script>
+(function () {
+  var Q = window.QUIZ, S = Q.settings, OUT = Q.outcomes, QS = Q.questions;
+  var stage = document.getElementById("stage");
+  var answers = [], current = 0, result = null, lead = { name: "" };
+
+  function esc(t) { return String(t).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function show(html, cls) {
+    stage.innerHTML = '<section class="screen ' + (cls || "") + '">' + html + "</section>";
+    window.scrollTo(0, 0);
+    var f = stage.querySelector("[data-focus]");
+    if (f) f.focus({ preventScroll: true });
+  }
+  function shapes(dot) { return '<span class="shape s-sun" aria-hidden="true"></span><span class="shape s-arc" aria-hidden="true"></span>' + (dot ? '<span class="shape s-dot" aria-hidden="true"></span>' : ""); }
+  function colorVar(k) { return "var(--" + (OUT[k].color || "teal") + ")"; }
+
+  /* ---------- built-in mid-century illustrations ---------- */
+  var ART = {
+    sunrise: '<rect x="0" y="118" width="320" height="62" rx="10" fill="var(--line)"/><circle cx="160" cy="118" r="58" fill="var(--mustard)"/><path d="M40 118 v-46 l40 -22 l40 22 v46" fill="var(--teal)"/><path d="M200 118 v-46 l40 -22 l40 22 v46" fill="var(--orange)"/><path d="M40 72 h80 M200 72 h80" stroke="var(--surface)" stroke-width="6" stroke-dasharray="10 10"/>',
+    speech: '<rect x="40" y="30" width="150" height="80" rx="40" fill="var(--teal)"/><path d="M80 104 l-20 34 l44 -26z" fill="var(--teal)"/><rect x="150" y="80" width="130" height="66" rx="33" fill="var(--mustard)"/><path d="M240 140 l22 28 l-6 -34z" fill="var(--mustard)"/><circle cx="90" cy="70" r="7" fill="var(--surface)"/><circle cx="115" cy="70" r="7" fill="var(--surface)"/><circle cx="140" cy="70" r="7" fill="var(--surface)"/>',
+    shapes: '<circle cx="90" cy="92" r="56" fill="var(--teal)"/><rect x="170" y="44" width="40" height="40" rx="6" fill="var(--orange)"/><rect x="222" y="44" width="40" height="40" rx="6" fill="var(--orange)"/><rect x="170" y="96" width="40" height="40" rx="6" fill="var(--orange)"/><rect x="222" y="96" width="40" height="40" rx="6" fill="var(--mustard)"/><path d="M60 160 h200" stroke="var(--line)" stroke-width="8" stroke-linecap="round"/>',
+    eye: '<path d="M30 90 Q160 -10 290 90 Q160 190 30 90z" fill="var(--mustard)"/><circle cx="160" cy="90" r="44" fill="var(--teal)"/><circle cx="160" cy="90" r="18" fill="var(--ink)"/><circle cx="172" cy="78" r="7" fill="var(--surface)"/>',
+    star: '<circle cx="160" cy="90" r="74" fill="var(--teal)"/><path d="M160 34 l15 40 h42 l-34 25 l13 41 l-36 -25 l-36 25 l13 -41 l-34 -25 h42z" fill="var(--mustard)"/><circle cx="262" cy="36" r="12" fill="none" stroke="var(--orange)" stroke-width="6"/><circle cx="56" cy="146" r="9" fill="var(--orange)"/>',
+    ledger: '<rect x="70" y="24" width="180" height="140" rx="12" fill="var(--surface)" stroke="var(--line)" stroke-width="4"/><path d="M96 60 h80 M96 88 h120 M96 116 h60" stroke="var(--line)" stroke-width="10" stroke-linecap="round"/><circle cx="236" cy="140" r="36" fill="var(--mustard)"/><circle cx="236" cy="140" r="22" fill="none" stroke="var(--surface)" stroke-width="5"/><circle cx="64" cy="48" r="20" fill="var(--teal)"/>',
+    repeat: (function () { var s = "", c = ["var(--teal)", "var(--mustard)", "var(--orange)", "var(--olive)"]; for (var r = 0; r < 4; r++) for (var i = 0; i < 9; i++) s += '<circle cx="' + (40 + i * 30) + '" cy="' + (36 + r * 36) + '" r="11" fill="' + c[(i + r) % 4] + '"/>'; return s; })(),
+    calendar: '<rect x="60" y="30" width="200" height="130" rx="14" fill="var(--surface)" stroke="var(--line)" stroke-width="4"/><rect x="60" y="30" width="200" height="34" rx="14" fill="var(--teal)"/><g fill="var(--line)"><rect x="80" y="80" width="22" height="22" rx="5"/><rect x="112" y="80" width="22" height="22" rx="5"/><rect x="144" y="80" width="22" height="22" rx="5"/><rect x="80" y="114" width="22" height="22" rx="5"/><rect x="112" y="114" width="22" height="22" rx="5"/><rect x="144" y="114" width="22" height="22" rx="5"/></g><rect x="184" y="80" width="56" height="56" rx="10" fill="var(--mustard)"/><circle cx="290" cy="40" r="16" fill="var(--orange)"/>',
+    hearts: '<circle cx="110" cy="78" r="34" fill="var(--teal)"/><rect x="72" y="116" width="76" height="50" rx="30" fill="var(--teal)"/><circle cx="210" cy="78" r="34" fill="var(--orange)"/><rect x="172" y="116" width="76" height="50" rx="30" fill="var(--orange)"/><path d="M160 60 c-10 -16 -34 -8 -28 10 c4 12 28 26 28 26 s24 -14 28 -26 c6 -18 -18 -26 -28 -10z" fill="var(--mustard)"/>',
+    envelope: '<rect x="60" y="44" width="200" height="120" rx="12" fill="var(--teal)"/><path d="M60 56 l100 64 l100 -64" fill="none" stroke="var(--surface)" stroke-width="6" stroke-linejoin="round"/><circle cx="258" cy="46" r="26" fill="var(--mustard)"/><path d="M247 46 l8 8 l14 -16" fill="none" stroke="#2A2320" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'
+  };
+  function picture(q) {
+    if (q.image) return '<img class="photo" src="' + esc(q.image) + '" alt="' + esc(q.imageAlt || "") + '">';
+    if (q.art && ART[q.art]) return '<div class="art" aria-hidden="true"><svg viewBox="0 0 320 180">' + ART[q.art] + "</svg></div>";
+    return "";
+  }
+
+  /* ---------- screens ---------- */
+  function intro() {
+    show('<div class="card">' + shapes(true) +
+      '<p class="byline">' + esc(S.byline) + '</p>' +
+      '<h1>' + esc(S.title) + '</h1>' +
+      '<p class="lede">' + esc(S.intro) + '</p>' +
+      '<div class="meta"><span>' + QS.length + ' questions</span><span>About 3 minutes</span><span>Six possible results</span></div>' +
+      '<button class="btn" id="start" data-focus>Start the quiz</button></div>');
+    document.getElementById("start").onclick = function () { answers = []; current = 0; question(); };
+  }
+
+  function question() {
+    var q = QS[current], n = current + 1, keys = "ABCDEFGH";
+    show(
+      '<div class="progress"><div class="progress-top"><span>Question ' + n + ' of ' + QS.length + '</span><span>' + (QS.length - n === 0 ? 'Last one!' : (QS.length - n) + ' to go') + '</span></div>' +
+      '<div class="bar"><i style="width:' + (current / QS.length * 100) + '%"></i></div></div>' +
+      picture(q) +
+      '<h2 class="question" tabindex="-1" data-focus>' + esc(q.q) + '</h2>' +
+      '<ul class="answers">' + q.a.map(function (a, i) {
+        return '<li><button class="answer' + (answers[current] === i ? " chosen" : "") + '" data-i="' + i + '"><span class="key">' + keys[i] + '</span><span>' + esc(a.t) + '</span></button></li>';
+      }).join("") + '</ul>' +
+      '<div class="qfoot">' + (current > 0 ? '<button class="linkish" id="back">← Back</button>' : '<span></span>') +
+      '<span class="hint">Tip: press ' + keys.slice(0, q.a.length).split("").join(", ") + ' to answer</span></div>', "top");
+    requestAnimationFrame(function () { var b = stage.querySelector(".bar i"); if (b) b.style.width = (n / QS.length * 100) + "%"; });
+    stage.querySelectorAll(".answer").forEach(function (b) { b.onclick = function () { choose(+b.dataset.i); }; });
+    var back = document.getElementById("back");
+    if (back) back.onclick = function () { current--; question(); };
+  }
+
+  var locked = false;
+  function choose(i) {
+    if (locked) return;
+    locked = true;
+    answers[current] = i;
+    stage.querySelectorAll(".answer").forEach(function (b) { b.classList.toggle("chosen", +b.dataset.i === i); });
+    setTimeout(function () {
+      locked = false;
+      current++;
+      if (current >= QS.length) return matching();
+      if (S.breatherAfter && current === S.breatherAfter && !breatherSeen) return breather();
+      question();
+    }, 380);
+  }
+
+  var breatherSeen = false;
+  function breather() {
+    breatherSeen = true;
+    show('<div class="card center">' + shapes(true) +
+      '<p class="byline">Halfway there</p>' +
+      '<h1>Nice work. Your picture is coming together.</h1>' +
+      '<p class="lede">There are no right answers. Go with your gut, not the answer you think a “real artist” would give.</p>' +
+      '<button class="btn" id="go" data-focus>Keep going</button></div>');
+    document.getElementById("go").onclick = question;
+  }
+
+  function matching() {
+    result = scoreQuiz(Q, answers);
+    show('<div class="orbit" aria-hidden="true"><span></span><span></span><span></span></div><p class="status" id="status">Reading your answers…</p>', "center");
+    var lines = ["Weighing up crowds and quiet studios…", "Checking your making style…", "Finding where you'll shine…"], k = 0;
+    var t = setInterval(function () { var el = document.getElementById("status"); if (el && k < lines.length) el.textContent = lines[k++]; }, 650);
+    setTimeout(function () { clearInterval(t); emailStep(); }, 2600);
+  }
+
+  function emailStep() {
+    var testing = !S.signupUrl;
+    show('<div class="card">' + shapes(false) +
+      '<p class="byline">Your result is ready</p>' +
+      '<h1>Where should we send it?</h1>' +
+      '<p class="lede">Pop in your name and email to see your selling personality. I\'ll also send you a copy to keep.</p>' +
+      '<form id="lead" novalidate>' +
+      '<div class="field"><label for="fn">First name</label><input id="fn" type="text" autocomplete="given-name" required data-focus></div>' +
+      '<div class="field"><label for="em">Email</label><input id="em" type="email" autocomplete="email" required></div>' +
+      '<button class="btn" type="submit">Show my result</button>' +
+      '<div class="err" id="err" role="alert"></div>' +
+      '<p class="small">' + esc(S.privacyNote) + '</p>' +
+      (testing ? '<button type="button" class="linkish" id="skip">Testing mode: skip this step (no email tool connected yet)</button>' : "") +
+      '</form></div>');
+    document.getElementById("lead").onsubmit = function (e) {
+      e.preventDefault();
+      var name = document.getElementById("fn").value.trim(), email = document.getElementById("em").value.trim(), err = document.getElementById("err");
+      if (!name) { err.textContent = "Please add your first name."; return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = "Please check your email address."; return; }
+      lead.name = name;
+      var btn = e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "One moment…";
+      send(name, email).then(function () { showResult(result, false); });
+    };
+    var skip = document.getElementById("skip");
+    if (skip) skip.onclick = function () { showResult(result, false); };
+  }
+
+  function send(name, email) {
+    if (!S.signupUrl) return Promise.resolve();
+    var body = new URLSearchParams();
+    body.append(S.fieldEmail, email);
+    body.append(S.fieldName, name);
+    body.append(S.fieldResult, OUT[result.top].name);
+    // no-cors: the email tool receives the details even though the browser can't read its reply.
+    var timeout = new Promise(function (r) { setTimeout(r, 4000); });
+    return Promise.race([fetch(S.signupUrl, { method: "POST", mode: "no-cors", body: body }).catch(function () {}), timeout]);
+  }
+
+  function showResult(r, shared) {
+    var o = OUT[r.top], ru = OUT[r.runnerUp], c = colorVar(r.top);
+    var mix = r.ranked ? '<div class="panel"><p class="eyebrow">Your selling mix</p><h2>How you match all six</h2><div class="mix">' +
+      r.ranked.map(function (x, i) {
+        return '<div class="mix-row' + (i === 0 ? " top" : "") + '"><span>' + esc(OUT[x.key].name) + '</span><div class="track"><i data-w="' + x.pct + '" style="background:' + colorVar(x.key) + '"></i></div><b>' + x.pct + '%</b></div>';
+      }).join("") + '</div></div>' : "";
+    show(
+      '<div class="card hero" style="--oc:' + c + '">' + shapes(true) +
+        '<p class="byline">' + esc(S.byline) + '</p>' +
+        '<p class="you-are">' + (shared ? "Their selling personality is" : (lead.name ? esc(lead.name) + ", you're" : "You're")) + '</p>' +
+        '<h1>' + esc(o.name) + '</h1>' +
+        '<span class="place">Best place to sell: ' + esc(o.place) + '</span>' +
+        '<p class="tagline">' + esc(o.tagline) + '</p>' +
+      '</div>' +
+      '<div class="panel"><p class="eyebrow">Your selling personality</p><p>' + esc(o.profile) + '</p><ul class="chips">' + o.traits.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + '</ul></div>' +
+      '<div class="two"><div class="panel"><p class="eyebrow">Why it suits you</p><p>' + esc(o.whyItFits) + '</p></div>' +
+      '<div class="panel"><p class="eyebrow">Watch out for</p><p>' + esc(o.watchOut) + '</p></div></div>' +
+      '<div class="panel"><p class="eyebrow">Your first three steps</p><ol class="steps">' + o.steps.map(function (s) { return "<li><span>" + esc(s) + "</span></li>"; }).join("") + '</ol></div>' +
+      (ru ? '<div class="panel"><p class="eyebrow">Your runner-up</p><h2>A streak of ' + esc(ru.name) + '</h2><p>You also lean towards <strong>' + esc(ru.place.toLowerCase()) + '</strong>. ' + esc(ru.tagline) + ' Many makers combine two ways of selling, and this one pairs well with your main result.</p></div>' : "") +
+      mix +
+      '<div class="upsell" style="--oc:' + c + '"><div class="book" aria-hidden="true"></div><div class="u-body"><p class="eyebrow">Ready for the next step?</p><h2>' + esc(o.guide.title) + '</h2><p>' + esc(o.guide.blurb) + '</p><p class="price">' + esc(o.guide.price) + '</p>' +
+        '<a class="btn" href="' + esc(o.guide.url) + '">Get the guide</a></div></div>' +
+      '<div class="actions">' + (shared ? '<button class="btn dark" id="again">Take the quiz yourself</button>' : '<button class="btn dark" id="share">Share my result</button><button class="btn ghost" id="again">Retake the quiz</button>') + '<span class="toast" id="toast" role="status"></span></div>' +
+      '<footer>' + esc(S.byline) + '</footer>', "top");
+    requestAnimationFrame(function () { setTimeout(function () { stage.querySelectorAll(".track i").forEach(function (i) { i.style.width = i.dataset.w + "%"; }); }, 120); });
+    document.getElementById("again").onclick = function () { try { history.replaceState(null, "", location.pathname); } catch (x) {} breatherSeen = false; intro(); };
+    var share = document.getElementById("share");
+    if (share) share.onclick = function () {
+      var url = location.origin + location.pathname + "?result=" + r.top, text = "I'm " + o.name + "! Find out where you should sell your art:";
+      if (navigator.share) navigator.share({ title: S.title, text: text, url: url }).catch(function () {});
+      else if (navigator.clipboard) navigator.clipboard.writeText(text + " " + url).then(function () { document.getElementById("toast").textContent = "Link copied!"; });
+    };
+  }
+
+  /* ---------- keyboard: A–D or 1–4 answers the current question ---------- */
+  document.addEventListener("keydown", function (e) {
+    if (!stage.querySelector(".answers") || e.metaKey || e.ctrlKey || e.altKey) return;
+    var k = e.key.toUpperCase(), i = "ABCDEFGH".indexOf(k);
+    if (i < 0 && /^[1-8]$/.test(k)) i = +k - 1;
+    if (i >= 0 && i < QS[current].a.length) choose(i);
+  });
+
+  /* ---------- start: a shared result link opens that result, otherwise the welcome screen ---------- */
+  var params = new URLSearchParams(location.search), shared = params.get("result");
+  if (shared && OUT[shared]) showResult({ top: shared, runnerUp: OUT[params.get("also")] ? params.get("also") : null }, true);
+  else intro();
+})();
+</script>
+</body>
+</html>
