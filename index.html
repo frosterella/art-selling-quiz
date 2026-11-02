@@ -271,11 +271,11 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
     show('<div class="orbit" aria-hidden="true"><span></span><span></span><span></span></div><p class="status" id="status">Reading your answers…</p>', "center");
     var lines = ["Weighing up crowds and quiet studios…", "Checking your making style…", "Finding where you'll shine…"], k = 0;
     var t = setInterval(function () { var el = document.getElementById("status"); if (el && k < lines.length) el.textContent = lines[k++]; }, 650);
-    setTimeout(function () { clearInterval(t); emailStep(); }, 2600);
+    // No email tool connected yet: go straight to the result.
+    setTimeout(function () { clearInterval(t); if (S.signupUrl) emailStep(); else showResult(result, false); }, 2600);
   }
 
   function emailStep() {
-    var testing = !S.signupUrl;
     show('<div class="card">' + shapes(false) +
       '<p class="byline">Your result is ready</p>' +
       '<h1>Where should we send it?</h1>' +
@@ -286,7 +286,6 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
       '<button class="btn" type="submit">Show my result</button>' +
       '<div class="err" id="err" role="alert"></div>' +
       '<p class="small">' + esc(S.privacyNote) + '</p>' +
-      (testing ? '<button type="button" class="linkish" id="skip">Testing mode: skip this step (no email tool connected yet)</button>' : "") +
       '</form></div>');
     document.getElementById("lead").onsubmit = function (e) {
       e.preventDefault();
@@ -297,8 +296,6 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
       var btn = e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "One moment…";
       send(name, email).then(function () { showResult(result, false); });
     };
-    var skip = document.getElementById("skip");
-    if (skip) skip.onclick = function () { showResult(result, false); };
   }
 
   function send(name, email) {

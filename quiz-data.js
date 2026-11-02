@@ -15,7 +15,8 @@ window.QUIZ = {
     // A short pause screen shown after this question number (0 to turn it off).
     breatherAfter: 5,
     // Where the name + email are sent before the result is shown.
-    // Paste a form endpoint from your email tool or a Zapier/Make webhook. Leave "" to skip the email step while testing.
+    // Paste a form endpoint from your email tool or a Zapier/Make webhook.
+    // While this is "", there is no email step: people go straight to their result.
     signupUrl: "",
     // Field names that endpoint expects. The defaults suit Kit (ConvertKit) forms; a webhook takes any names.
     fieldEmail: "email_address",

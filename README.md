@@ -23,7 +23,7 @@ Each result shows a personality profile, why that way of selling suits them, wha
 
 ## Before you share it
 
-1. **Connect your email tool.** In `quiz-data.js`, set `signupUrl` to your email tool's form endpoint or a Zapier/Make webhook. Until you do, the quiz shows a "Testing mode: skip" link and collects no emails. The quiz sends first name, email and result name, so you can tag subscribers by result.
+1. **Connect your email tool.** In `quiz-data.js`, set `signupUrl` to your email tool's form endpoint or a Zapier/Make webhook. Until you do, the quiz skips the email step and goes straight to the result. The quiz sends first name, email and result name, so you can tag subscribers by result.
 2. **Add the guide links.** Replace each `url: "#"` under `guide` with the guide's checkout link.
 
 ## Sharing a result
