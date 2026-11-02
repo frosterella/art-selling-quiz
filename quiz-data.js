@@ -125,121 +125,109 @@ window.QUIZ = {
   },
 
   /* ---------- The questions (one per screen) ----------
-     Each question can show a picture above it:
-       art: "sunrise"            a built-in illustration (sunrise, speech, shapes, eye, star, ledger, laptop, repeat, calendar, hearts, envelope)
-       image: "photos/q1.jpg"    your own photo or image instead (add imageAlt: "what the picture shows")
-       leave both out            no picture
+     Every answer shows a picture beside it:
+       art: "stall"              one of the illustrations in icons.js
+       image: "photos/a1.jpg"    your own image instead (add alt: "what the picture shows")
      Add or remove questions freely; the scoring adjusts itself. Run `node test-scoring.js` afterwards to check the balance.
   */
   questions: [
     {
-      art: "sunrise",
       q: "It's Saturday morning and you have nothing planned. You're most likely to…",
       a: [
-        { t: "Wander a busy farmers market, chatting with the stallholders", s: { market: 2, cafe: 1 } },
-        { t: "Disappear into the studio with your phone switched off", s: { gallery: 2, online: 1 } },
-        { t: "Meet one close friend for a long, deep conversation", s: { commission: 2, cafe: 1 } },
-        { t: "Make lists, tidy up and get organised for the week", s: { wholesale: 2, online: 1 } }
+        { art: "stall", t: "Wander a busy farmers market, chatting with the stallholders", s: { market: 2, cafe: 1 } },
+        { art: "easel", t: "Disappear into the studio with your phone switched off", s: { gallery: 2, online: 1 } },
+        { art: "cups", t: "Meet one close friend for a long, deep conversation", s: { commission: 2, cafe: 1 } },
+        { art: "checklist", t: "Make lists, tidy up and get organised for the week", s: { wholesale: 2, online: 1 } }
       ]
     },
     {
-      art: "speech",
       q: "At a party, someone asks, “So what do you make?” You…",
       a: [
-        { t: "Pull out your phone and happily show them photos", s: { market: 2, commission: 1 } },
-        { t: "Mumble something modest and change the subject", s: { gallery: 2, online: 1 } },
-        { t: "Tell them where they can see a piece in person around town", s: { cafe: 2, market: 1 } },
-        { t: "Tell them they can find it all on your website or Instagram", s: { online: 2, wholesale: 1 } }
+        { art: "phone", t: "Pull out your phone and happily show them photos", s: { market: 2, commission: 1 } },
+        { art: "shy", t: "Mumble something modest and change the subject", s: { gallery: 2, online: 1 } },
+        { art: "pin", t: "Tell them where they can see a piece in person around town", s: { cafe: 2, market: 1 } },
+        { art: "browser", t: "Tell them they can find it all on your website or Instagram", s: { online: 2, wholesale: 1 } }
       ]
     },
     {
-      art: "shapes",
       q: "Which sounds most like your work right now?",
       a: [
-        { t: "One-of-a-kind pieces that take a while to make", s: { gallery: 2, cafe: 1 } },
-        { t: "Small batches of designs I can make again and again", s: { wholesale: 2, market: 1 } },
-        { t: "A real mix of sizes, from little things to bigger pieces", s: { market: 2, online: 1 } },
-        { t: "Pieces made for particular people, like gifts and portraits", s: { commission: 2, gallery: 1 } }
+        { art: "original", t: "One-of-a-kind pieces that take a while to make", s: { gallery: 2, cafe: 1 } },
+        { art: "batch", t: "Small batches of designs I can make again and again", s: { wholesale: 2, market: 1 } },
+        { art: "sizes", t: "A real mix of sizes, from little things to bigger pieces", s: { market: 2, online: 1 } },
+        { art: "gift", t: "Pieces made for particular people, like gifts and portraits", s: { commission: 2, gallery: 1 } }
       ]
     },
     {
-      art: "eye",
       q: "A stranger stops to look at your work and asks a lot of questions. You feel…",
       a: [
-        { t: "Energised. This is the best part!", s: { market: 2, commission: 1 } },
-        { t: "Pleased, but I'd rather they just read the label", s: { cafe: 2, gallery: 1 } },
-        { t: "A bit panicked. Can someone else handle this?", s: { gallery: 2, wholesale: 1 } },
-        { t: "Curious about what they might want made just for them", s: { commission: 2, online: 1 } }
+        { art: "burst", t: "Energised. This is the best part!", s: { market: 2, commission: 1 } },
+        { art: "tag", t: "Pleased, but I'd rather they just read the label", s: { cafe: 2, gallery: 1 } },
+        { art: "door", t: "A bit panicked. Can someone else handle this?", s: { gallery: 2, wholesale: 1 } },
+        { art: "bulb", t: "Curious about what they might want made just for them", s: { commission: 2, online: 1 } }
       ]
     },
     {
-      art: "star",
       q: "A year from now, what would feel like real success?",
       a: [
-        { t: "My work on walls around town, and people recognising it", s: { cafe: 2, market: 1 } },
-        { t: "Being shown in a proper gallery and taken seriously", s: { gallery: 2, commission: 1 } },
-        { t: "Orders coming in while I sleep", s: { online: 2, wholesale: 1 } },
-        { t: "My products on shop shelves across the region", s: { wholesale: 2, cafe: 1 } }
+        { art: "town", t: "My work on walls around town, and people recognising it", s: { cafe: 2, market: 1 } },
+        { art: "spotlight", t: "Being shown in a proper gallery and taken seriously", s: { gallery: 2, commission: 1 } },
+        { art: "moon", t: "Orders coming in while I sleep", s: { online: 2, wholesale: 1 } },
+        { art: "shelf", t: "My products on shop shelves across the region", s: { wholesale: 2, cafe: 1 } }
       ]
     },
     {
-      art: "ledger",
       q: "How do you feel about the business side: pricing, marketing, emails and packing orders?",
       a: [
-        { t: "I'm happy to do it all. I like being in charge", s: { online: 2, market: 1 } },
-        { t: "I'll happily sell in person, but please don't make me do spreadsheets", s: { market: 2, cafe: 1 } },
-        { t: "I'd love for someone else to handle all of it", s: { gallery: 2, wholesale: 1 } },
-        { t: "I'm fine with it if it's simple and repeatable", s: { wholesale: 2, online: 1 } }
+        { art: "crown", t: "I'm happy to do it all. I like being in charge", s: { online: 2, market: 1 } },
+        { art: "chat", t: "I'll happily sell in person, but please don't make me do spreadsheets", s: { market: 2, cafe: 1 } },
+        { art: "hammock", t: "I'd love for someone else to handle all of it", s: { gallery: 2, wholesale: 1 } },
+        { art: "cog", t: "I'm fine with it if it's simple and repeatable", s: { wholesale: 2, online: 1 } }
       ]
     },
     {
-      art: "laptop",
       q: "Be honest: how do you feel about technology?",
       a: [
-        { t: "I love it. Building a website, editing photos and trying new apps is fun", s: { online: 2, wholesale: 1 } },
-        { t: "I'm happy with email and sharing good photos of my work with clients", s: { commission: 2, online: 1 } },
-        { t: "Basics only. I'd rather be out in my real-life community than scrolling", s: { cafe: 2, market: 1 } },
-        { t: "I'd much rather someone else dealt with it", s: { gallery: 2, wholesale: 1 } }
+        { art: "laptop", t: "I love it. Building a website, editing photos and trying new apps is fun", s: { online: 2, wholesale: 1 } },
+        { art: "camera", t: "I'm happy with email and sharing good photos of my work with clients", s: { commission: 2, online: 1 } },
+        { art: "people", t: "Basics only. I'd rather be out in my real-life community than scrolling", s: { cafe: 2, market: 1 } },
+        { art: "unplugged", t: "I'd much rather someone else dealt with it", s: { gallery: 2, wholesale: 1 } }
       ]
     },
     {
-      art: "repeat",
       q: "Making the same design 50 times sounds…",
       a: [
-        { t: "Satisfying, almost meditative", s: { wholesale: 2, online: 1 } },
-        { t: "Fine, as long as I can play with colours and variations", s: { online: 2, market: 1 } },
-        { t: "Soul-destroying. Every piece should be different", s: { gallery: 2, commission: 1 } },
-        { t: "Only if each one is made for someone special", s: { commission: 2, cafe: 1 } }
+        { art: "dots", t: "Satisfying, almost meditative", s: { wholesale: 2, online: 1 } },
+        { art: "palette", t: "Fine, as long as I can play with colours and variations", s: { online: 2, market: 1 } },
+        { art: "swirl", t: "Soul-destroying. Every piece should be different", s: { gallery: 2, commission: 1 } },
+        { art: "heart", t: "Only if each one is made for someone special", s: { commission: 2, cafe: 1 } }
       ]
     },
     {
-      art: "calendar",
       q: "When it comes to your weekends and spare time…",
       a: [
-        { t: "I'd give up some weekends for early starts and setting up a stall", s: { market: 2, wholesale: 1 } },
-        { t: "I want selling to happen without me being there", s: { online: 2, gallery: 1 } },
-        { t: "A few hours here and there for drop-offs and a chat suits me", s: { cafe: 2, commission: 1 } },
-        { t: "It's unpredictable, so I'd fit projects in around life", s: { commission: 2, online: 1 } }
+        { art: "clock", t: "I'd give up some weekends for early starts and setting up a stall", s: { market: 2, wholesale: 1 } },
+        { art: "parcel", t: "I want selling to happen without me being there", s: { online: 2, gallery: 1 } },
+        { art: "tote", t: "A few hours here and there for drop-offs and a chat suits me", s: { cafe: 2, commission: 1 } },
+        { art: "hourglass", t: "It's unpredictable, so I'd fit projects in around life", s: { commission: 2, online: 1 } }
       ]
     },
     {
-      art: "hearts",
       q: "Your ideal relationship with the people who buy your work is…",
       a: [
-        { t: "Friendly regulars who come back to see what's new", s: { market: 2, cafe: 1 } },
-        { t: "A collector who treasures my piece, even if we never meet", s: { gallery: 2, online: 1 } },
-        { t: "A client or interior designer I work with closely on a piece for a special space", s: { commission: 2, market: 1 } },
-        { t: "Shop owners who reorder every season", s: { wholesale: 2, gallery: 1 } }
+        { art: "faces", t: "Friendly regulars who come back to see what's new", s: { market: 2, cafe: 1 } },
+        { art: "collector", t: "A collector who treasures my piece, even if we never meet", s: { gallery: 2, online: 1 } },
+        { art: "sofa", t: "A client or interior designer I work with closely on a piece for a special space", s: { commission: 2, market: 1 } },
+        { art: "store", t: "Shop owners who reorder every season", s: { wholesale: 2, gallery: 1 } }
       ]
     },
     {
-      art: "envelope",
       q: "Which message would make your week?",
       a: [
-        { t: "“I saw your piece at the café and had to find you!”", s: { cafe: 2, commission: 1 } },
-        { t: "“We'd love to include you in our next exhibition.”", s: { gallery: 2, cafe: 1 } },
-        { t: "“Your shop made three sales overnight.”", s: { online: 2, wholesale: 1 } },
-        { t: "“Can we put in another order of 24 for the holidays?”", s: { wholesale: 2, market: 1 } }
+        { art: "cup", t: "“I saw your piece at the café and had to find you!”", s: { cafe: 2, commission: 1 } },
+        { art: "invite", t: "“We'd love to include you in our next exhibition.”", s: { gallery: 2, cafe: 1 } },
+        { art: "bell", t: "“Your shop made three sales overnight.”", s: { online: 2, wholesale: 1 } },
+        { art: "boxes", t: "“Can we put in another order of 24 for the holidays?”", s: { wholesale: 2, market: 1 } }
       ]
     }
   ]

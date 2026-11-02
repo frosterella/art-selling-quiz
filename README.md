@@ -17,6 +17,7 @@ Each result shows a personality profile, why that way of selling suits them, wha
 
 - `index.html`: the quiz page (design and screens).
 - `quiz-data.js`: **all the words**: questions, answers, scoring, results, guide links and settings. Edit this one.
+- `icons.js`: the illustration shown beside each answer.
 - `scoring.js`: works out the result.
 - `test-scoring.js`: checks the quiz is balanced. Run `node test-scoring.js` after changing questions or scoring.
 

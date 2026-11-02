@@ -14,7 +14,7 @@
   --bg: #F4EDE1; --surface: #FFFBF4; --ink: #2A2320; --muted: #6B5F57; --line: #E4D8C6;
   --teal: #1F6F6B; --mustard: #E2A72E; --orange: #C4572C; --olive: #74863A; --plum: #7B4B6E; --rose: #B8575F;
   --accent: #1F6F6B; --accent-soft: #E0EEEB; --on-accent: #FFFBF4;
-  --mast: #4A3227; --mast-ink: #FBF2E2; --pick: #FCF1D4; --pick-line: #E2A72E;
+  --mast: #4A3227; --mast-ink: #FBF2E2; --pick: #FCF1D4; --pick-line: #E2A72E; --paper: #FFFBF4; --tile: #F4EDE1;
   --font: "Jost", "Futura", "Century Gothic", "Avenir Next", system-ui, sans-serif;
   color-scheme: light;
 }
@@ -22,14 +22,14 @@
   --bg: #1C1815; --surface: #26201C; --ink: #F1E7D7; --muted: #B2A595; --line: #3A322B;
   --teal: #5DB1A9; --mustard: #E8B54C; --orange: #E27B52; --olive: #A3B65E; --plum: #C08AB3; --rose: #E38A90;
   --accent: #5DB1A9; --accent-soft: #1E3533; --on-accent: #1C1815;
-  --mast: #3B281F; --mast-ink: #FBF2E2; --pick: #352C1C; --pick-line: #E8B54C;
+  --mast: #3B281F; --mast-ink: #FBF2E2; --pick: #352C1C; --pick-line: #E8B54C; --paper: #E9DFCF; --tile: #1C1815;
   color-scheme: dark;
 } }
 :root[data-theme="dark"] {
   --bg: #1C1815; --surface: #26201C; --ink: #F1E7D7; --muted: #B2A595; --line: #3A322B;
   --teal: #5DB1A9; --mustard: #E8B54C; --orange: #E27B52; --olive: #A3B65E; --plum: #C08AB3; --rose: #E38A90;
   --accent: #5DB1A9; --accent-soft: #1E3533; --on-accent: #1C1815;
-  --mast: #3B281F; --mast-ink: #FBF2E2; --pick: #352C1C; --pick-line: #E8B54C;
+  --mast: #3B281F; --mast-ink: #FBF2E2; --pick: #352C1C; --pick-line: #E8B54C; --paper: #E9DFCF; --tile: #1C1815;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -78,12 +78,25 @@ a.btn { text-decoration: none; display: inline-block; }
 .question:focus { outline: none; }
 .qnum { font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
 .question { font-size: clamp(25px, 5vw, 34px); }
-.answers { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
-.answer { width: 100%; display: grid; grid-template-columns: 40px minmax(0, 1fr); align-items: center; gap: 14px; text-align: left; background: var(--surface); color: var(--ink); border: 2px solid var(--line); border-radius: 16px; padding: 14px 18px 14px 14px; font-size: 17px; line-height: 1.4; transition: border-color .15s, background .15s, transform .15s; }
-.answer:hover { border-color: var(--mustard); transform: translateX(3px); }
-.answer .key { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; background: var(--bg); color: var(--muted); transition: background .15s, color .15s; }
+.answers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.answers li { display: flex; }
+.answer { width: 100%; display: grid; grid-template-rows: auto 1fr; text-align: left; background: var(--surface); color: var(--ink); border: 2px solid var(--line); border-radius: 18px; padding: 10px; font-size: 16px; line-height: 1.4; transition: border-color .15s, background .15s, transform .15s; }
+.answer:hover { border-color: var(--mustard); transform: translateY(-2px); }
+.answer .pic { position: relative; background: var(--tile); border-radius: 12px; aspect-ratio: 16 / 10; display: grid; place-items: center; overflow: hidden; }
+.answer .pic svg { width: 62%; height: 86%; }
+.answer .pic img { width: 100%; height: 100%; object-fit: cover; }
+.answer .txt { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: start; padding: 12px 4px 4px; }
+.answer .key { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-weight: 600; font-size: 14px; background: var(--bg); color: var(--muted); transition: background .15s, color .15s; }
 .answer.chosen { border-color: var(--pick-line); background: var(--pick); }
 .answer.chosen .key { background: var(--mustard); color: #2A2320; }
+@media (max-width: 560px) {
+  .answers { grid-template-columns: 1fr; gap: 10px; }
+  .answer { grid-template-rows: none; grid-template-columns: 84px minmax(0, 1fr); align-items: center; gap: 12px; padding: 8px; }
+  .answer .pic { aspect-ratio: 1; }
+  .answer .pic svg { width: 84%; height: 84%; }
+  .answer .txt { padding: 0 4px 0 0; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; align-items: center; }
+  .answer .key { width: 26px; height: 26px; font-size: 13px; }
+}
 .qfoot { display: flex; justify-content: space-between; align-items: center; min-height: 36px; }
 .hint { font-size: 13px; color: var(--muted); }
 @media (hover: none) { .hint { display: none; } }
@@ -154,6 +167,7 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
 <main class="stage" id="stage" aria-live="polite"></main>
 
 <script src="quiz-data.js"></script>
+<script src="icons.js"></script>
 <script src="scoring.js"></script>
 <script>
 (function () {
@@ -191,6 +205,12 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
     return "";
   }
 
+  function answerPic(a) {
+    if (a.image) return '<span class="pic"><img src="' + esc(a.image) + '" alt="' + esc(a.alt || "") + '"></span>';
+    var art = window.ANSWER_ART && window.ANSWER_ART[a.art];
+    return art ? '<span class="pic" aria-hidden="true"><svg viewBox="0 0 100 100">' + art + '</svg></span>' : "";
+  }
+
   /* ---------- screens ---------- */
   function intro() {
     show('<div class="card">' + shapes(true) +
@@ -210,7 +230,7 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
       picture(q) +
       '<h2 class="question" tabindex="-1" data-focus>' + esc(q.q) + '</h2>' +
       '<ul class="answers">' + q.a.map(function (a, i) {
-        return '<li><button class="answer' + (answers[current] === i ? " chosen" : "") + '" data-i="' + i + '"><span class="key">' + keys[i] + '</span><span>' + esc(a.t) + '</span></button></li>';
+        return '<li><button class="answer' + (answers[current] === i ? " chosen" : "") + '" data-i="' + i + '">' + answerPic(a) + '<span class="txt"><span class="key">' + keys[i] + '</span><span>' + esc(a.t) + '</span></span></button></li>';
       }).join("") + '</ul>' +
       '<div class="qfoot">' + (current > 0 ? '<button class="linkish" id="back">← Back</button>' : '<span></span>') +
       '<span class="hint">Tip: press ' + keys.slice(0, q.a.length).split("").join(", ") + ' to answer</span></div>', "top");
