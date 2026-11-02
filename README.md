@@ -11,7 +11,9 @@ A personality-quiz lead magnet for artists and makers. Eleven questions, shown o
 | The Online Independent | Your own website, Etsy & social media |
 | The Custom Collaborator | Commissions, interior designers & art consultants |
 
-Each result shows a personality profile, why that way of selling suits them, what to watch out for, three first steps, a runner-up, their match with all six, and a link to a $27 guide.
+At the end, people see their result's name first. To unlock the full breakdown and a free printable checklist for their result, they enter their first name and email.
+
+The full breakdown shows a personality profile, why that way of selling suits them, what to watch out for, three first steps, the checklist (tickable on screen, or print/save as PDF), a runner-up, their match with all six, and a link to a $27 guide.
 
 ## Files
 
@@ -23,9 +25,9 @@ Each result shows a personality profile, why that way of selling suits them, wha
 
 ## Before you share it
 
-1. **Connect your email tool.** In `quiz-data.js`, set `signupUrl` to your email tool's form endpoint or a Zapier/Make webhook. Until you do, the quiz skips the email step and goes straight to the result. The quiz sends first name, email and result name, so you can tag subscribers by result.
+1. **Connect your email tool.** In `quiz-data.js`, set `signupUrl` to your email tool's form endpoint or a Zapier/Make webhook. Until you do, the unlock screen shows a "See my full breakdown" button with no email fields. The quiz sends first name, email and result name, so you can tag subscribers by result.
 2. **Add the guide links.** Replace each `url: "#"` under `guide` with the guide's checkout link.
 
 ## Sharing a result
 
-The "Share my result" button shares a link like `index.html?result=market`, which opens that result with a "Take the quiz yourself" button.
+The "Share my result" button shares a link like `index.html?result=market`, which shows only the result's name and a "Take the quiz" button, so the full breakdown stays behind the sign-up.

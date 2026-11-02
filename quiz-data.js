@@ -22,6 +22,8 @@ window.QUIZ = {
     fieldEmail: "email_address",
     fieldName: "fields[first_name]",
     fieldResult: "fields[quiz_result]",
+    // Shown on the unlock screen. Only promise an emailed copy once your email tool sends one.
+    unlockNote: "I'll also email you a copy, so you can come back to it.",
     privacyNote: "You'll also get my emails about selling your art. Unsubscribe any time."
   },
 
@@ -41,6 +43,22 @@ window.QUIZ = {
         "Build a range: small impulse buys, mid-priced pieces and a few showstoppers.",
         "Apply for one small, low-fee market and treat it as an experiment, not a test of your worth."
       ],
+      checklist: {
+        title: "The Market Maker's Getting-Started Checklist",
+        items: [
+          "Visit two or three markets as a shopper and note what sells, and at what price",
+          "Choose one beginner-friendly market and check its application dates and booth fee",
+          "Price every piece so it covers materials, your time and a share of the booth fee",
+          "Build a range: small impulse buys, mid-priced pieces and a few showstoppers",
+          "Make enough stock to fill your table, plus extras of your likely best-sellers",
+          "Practise your table setup at home, using crates or stands to add height",
+          "Label every price clearly so shoppers don't have to ask",
+          "Set up a card reader and bring a float of small change",
+          "Bring business cards or a QR code that leads to your Instagram or email list",
+          "Pack your kit: tent weights, tablecloth, bags, tape, water and snacks",
+          "Afterwards, note what sold, what people asked about, and your takings minus costs"
+        ]
+      },
       guide: { title: "The Market Maker's Guide", blurb: "Booth setup, pricing that sells, what to bring and how to turn browsers into buyers.", price: "$27", url: "#" }
     },
     cafe: {
@@ -57,6 +75,22 @@ window.QUIZ = {
         "Prepare a cohesive set of 6–10 pieces, ready to hang, with labels and prices.",
         "Visit at a quiet time of day and ask the owner how their art wall works."
       ],
+      checklist: {
+        title: "The Local Favourite's Getting-Started Checklist",
+        items: [
+          "List five cafés, restaurants or community spaces near you that show local art",
+          "Visit each one and note the wall space, the lighting and the art already there",
+          "Choose 6–10 pieces that hang well together as a set",
+          "Get them ready to hang: wired, framed if needed, and checked for damage",
+          "Make a label for each with title, medium, size, price and your contact details",
+          "Add a QR code that leads to your website, Instagram or email list",
+          "Ask the owner about commission, hanging dates and how sales are handled",
+          "Put the agreement in writing, including who covers damage or theft",
+          "Keep an inventory with a photo of every piece you leave",
+          "Share the show online and invite friends to visit",
+          "Check in every few weeks and swap out pieces that aren't getting attention"
+        ]
+      },
       guide: { title: "The Local Favourite's Guide", blurb: "How to pitch cafés, what to agree in writing, and how to turn a wall into sales and followers.", price: "$27", url: "#" }
     },
     gallery: {
@@ -73,6 +107,22 @@ window.QUIZ = {
         "Enter local juried shows and open calls to start your artist CV.",
         "Research three galleries that show work like yours. Go to their openings and follow their submission guidelines exactly."
       ],
+      checklist: {
+        title: "The Studio Devotee's Getting-Started Checklist",
+        items: [
+          "Choose your focus: the subject, medium or style you want to be known for",
+          "Create a cohesive series of 10–15 pieces that clearly belong together",
+          "Photograph every piece square on, in even light",
+          "Write a short artist statement (about 150 words) and a bio",
+          "Start an artist CV, even if it's only a few lines for now",
+          "Keep an inventory: title, size, medium, date and price for every piece",
+          "Enter two or three local juried shows or open calls this year",
+          "Go to openings near you and note which galleries show work like yours",
+          "Read each gallery's submission guidelines and follow them exactly",
+          "Check your prices still work for you after a 40–50% gallery commission",
+          "Follow up politely, and keep making while you wait"
+        ]
+      },
       guide: { title: "The Studio Devotee's Guide", blurb: "Building a body of work, your first artist CV, and approaching galleries without the cringe.", price: "$27", url: "#" }
     },
     wholesale: {
@@ -89,6 +139,22 @@ window.QUIZ = {
         "Check your numbers: your retail price divided by two must still be profitable.",
         "Make a simple line sheet and approach three local shops that suit your style."
       ],
+      checklist: {
+        title: "The Production Pro's Getting-Started Checklist",
+        items: [
+          "Choose 4–8 products you can make the same way every time",
+          "Time yourself making a full batch, and cost every material",
+          "Set retail prices where half (the wholesale price) still covers costs, time and profit",
+          "Decide your minimum order and how shops reorder",
+          "Test your packaging so products arrive safely and look good on a shelf",
+          "Photograph every product on a plain background",
+          "Make a simple line sheet: photos, product codes, wholesale and suggested retail prices",
+          "List ten local shops whose style matches yours",
+          "Approach three of them, with samples if you can",
+          "Work out how much you can make each month before you say yes to orders",
+          "Consider consignment for your first shop, with a written agreement"
+        ]
+      },
       guide: { title: "The Production Pro's Guide", blurb: "Wholesale pricing, line sheets, approaching shops and keeping up with reorders.", price: "$27", url: "#" }
     },
     online: {
@@ -105,6 +171,22 @@ window.QUIZ = {
         "Pick one platform (Etsy for built-in shoppers, your own site for control) and launch with what you have.",
         "Start an email list today. Those subscribers are your future buyers."
       ],
+      checklist: {
+        title: "The Online Independent's Getting-Started Checklist",
+        items: [
+          "Choose one place to start: Etsy for built-in shoppers or your own site for control",
+          "Photograph your ten best pieces in natural light",
+          "Write descriptions that tell each piece's story and give sizes and materials",
+          "Build packaging and shipping costs into your prices",
+          "Write your shop policies: shipping times, returns and custom requests",
+          "Pick one social media platform and post there three times a week",
+          "Start an email list and put the sign-up link on your shop and profile",
+          "Launch with what you have rather than waiting until it's perfect",
+          "Tell friends, family and past buyers that your shop is open",
+          "Check your shop stats once a month and note what people click on",
+          "Add new work regularly so returning visitors find something fresh"
+        ]
+      },
       guide: { title: "The Online Independent's Guide", blurb: "Choosing a platform, product photos that sell, and getting your first online buyers.", price: "$27", url: "#" }
     },
     commission: {
@@ -121,6 +203,22 @@ window.QUIZ = {
         "Make two or three sample pieces for friends or family to use as examples.",
         "Create a simple commission page with your prices and examples, then introduce yourself to two or three local interior designers or home stagers."
       ],
+      checklist: {
+        title: "The Custom Collaborator's Getting-Started Checklist",
+        items: [
+          "Decide what you'll offer: subjects, sizes and materials",
+          "Set a fixed price for each option so you're not quoting from scratch",
+          "Make two or three sample pieces to show what you do",
+          "Write out your process: enquiry, deposit, sketch, final piece, delivery",
+          "Decide your deposit (often 50%, non-refundable) and how many revisions you include",
+          "Create a simple agreement covering price, timeline, revisions and deposit",
+          "Make a commission page or enquiry form with examples and prices",
+          "Set your trade discount for interior designers (often 10–20%)",
+          "Introduce yourself to two or three local interior designers or home stagers",
+          "Photograph every finished commission, with the client's permission, for your portfolio",
+          "Ask happy clients for a testimonial and a referral"
+        ]
+      },
       guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing and deposits, working with interior designers, and handling clients with confidence.", price: "$27", url: "#" }
     }
   },

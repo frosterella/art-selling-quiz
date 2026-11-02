@@ -158,6 +158,44 @@ input:focus { outline: none; border-color: var(--mustard); }
 @media (max-width: 520px) { .upsell { grid-template-columns: 1fr; } }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .toast { font-size: 14px; color: var(--accent); font-weight: 500; }
+.unlock { --oc: var(--teal); background: var(--surface); border-radius: 20px; padding: clamp(22px, 4vw, 34px); display: grid; gap: 16px; box-shadow: inset 0 0 0 3px var(--oc); }
+.unlock h2 { font-size: clamp(22px, 3.6vw, 28px); }
+.gets { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.gets li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: start; }
+.gets li::before { content: "✓"; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--oc); color: #FFFBF4; font-weight: 700; font-size: 13px; margin-top: 1px; }
+.gets li.bonus { background: var(--pick); border-radius: 12px; padding: 10px 12px; margin-top: 4px; }
+.gets li.bonus::before { content: "★"; background: var(--mustard); color: #2A2320; }
+.unlock form { gap: 12px; }
+.unlock .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 560px) { .unlock .fields { grid-template-columns: 1fr; } }
+.unlock input[type=text], .unlock input[type=email] { background: var(--bg); color: var(--ink); border-color: var(--line); }
+.unlock input:focus { border-color: var(--mustard); }
+.unlock .btn { background: var(--oc); color: #FFFBF4; }
+.unlock .err { color: var(--orange); }
+.unlock .small { color: var(--muted); opacity: 1; }
+.panel.center { text-align: center; justify-items: center; }
+.cl-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; flex-wrap: wrap; }
+.small-btn { padding: 9px 16px; font-size: 14px; }
+.cl { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.cl li { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 10px; align-items: start; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.cl li:last-child { border-bottom: 0; }
+.cl input { appearance: none; -webkit-appearance: none; width: 22px; height: 22px; margin: 1px 0 0; border: 2px solid var(--teal); border-radius: 6px; display: grid; place-items: center; cursor: pointer; background: var(--surface); }
+.cl input:checked { background: var(--teal); }
+.cl input:checked::after { content: "✓"; color: var(--on-accent); font-size: 14px; font-weight: 700; }
+.cl input:checked + label { color: var(--muted); text-decoration: line-through; }
+.cl label { cursor: pointer; font-weight: 400; font-size: 16px; }
+.print-only { display: none; }
+@media print {
+  body.printing { background: #fff; color: #2A2320; }
+  body.printing .screen > *:not(#checklist) { display: none !important; }
+  body.printing .stage { padding: 0; min-height: 0; }
+  body.printing #checklist { box-shadow: none; padding: 0; background: #fff; }
+  body.printing #print { display: none; }
+  body.printing .print-only { display: block; color: #6B5F57; font-size: 13px; }
+  body.printing .cl li { border-color: #ddd; break-inside: avoid; }
+  body.printing .cl input { border-color: #2A2320; background: #fff; }
+  body.printing .cl input:checked + label { color: #2A2320; text-decoration: none; }
+}
 footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 28px; }
 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
@@ -271,32 +309,64 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
     show('<div class="orbit" aria-hidden="true"><span></span><span></span><span></span></div><p class="status" id="status">Reading your answers…</p>', "center");
     var lines = ["Weighing up crowds and quiet studios…", "Checking your making style…", "Finding where you'll shine…"], k = 0;
     var t = setInterval(function () { var el = document.getElementById("status"); if (el && k < lines.length) el.textContent = lines[k++]; }, 650);
-    // No email tool connected yet: go straight to the result.
-    setTimeout(function () { clearInterval(t); if (S.signupUrl) emailStep(); else showResult(result, false); }, 2600);
+    setTimeout(function () { clearInterval(t); reveal(); }, 2600);
   }
 
-  function emailStep() {
-    show('<div class="card">' + shapes(false) +
-      '<p class="byline">Your result is ready</p>' +
-      '<h1>Where should we send it?</h1>' +
-      '<p class="lede">Pop in your name and email to see your selling personality. I\'ll also send you a copy to keep.</p>' +
-      '<form id="lead" novalidate>' +
-      '<div class="field"><label for="fn">First name</label><input id="fn" type="text" autocomplete="given-name" required data-focus></div>' +
-      '<div class="field"><label for="em">Email</label><input id="em" type="email" autocomplete="email" required></div>' +
-      '<button class="btn" type="submit">Show my result</button>' +
-      '<div class="err" id="err" role="alert"></div>' +
-      '<p class="small">' + esc(S.privacyNote) + '</p>' +
-      '</form></div>');
+  function heroCard(key, who) {
+    var o = OUT[key];
+    return '<div class="card hero" style="--oc:' + colorVar(key) + '">' + shapes(true) +
+      '<p class="byline">' + esc(S.byline) + '</p>' +
+      '<p class="you-are">' + who + '</p>' +
+      '<h1>' + esc(o.name) + '</h1>' +
+      '<span class="place">Best place to sell: ' + esc(o.place) + '</span>' +
+      '<p class="tagline">' + esc(o.tagline) + '</p></div>';
+  }
+
+  // Step 1: reveal the result's name, then offer the full breakdown and checklist in exchange for an email.
+  function reveal() {
+    var o = OUT[result.top], ask = !!S.signupUrl;
+    show(heroCard(result.top, "You're") +
+      '<div class="unlock" style="--oc:' + colorVar(result.top) + '">' +
+        '<p class="eyebrow">Your full breakdown is ready</p>' +
+        '<h2>Get your full breakdown, plus a free checklist made for you</h2>' +
+        '<ul class="gets">' +
+          '<li>Your selling personality profile and strengths</li>' +
+          '<li>Why this way of selling suits you, and what to watch out for</li>' +
+          '<li>Your first three steps</li>' +
+          '<li>Your runner-up, and how you match all six</li>' +
+          '<li class="bonus"><span><strong>Free printable:</strong> ' + esc(o.checklist.title) + '</span></li>' +
+        '</ul>' +
+        '<form id="lead" novalidate>' +
+          (ask ? '<div class="fields"><div class="field"><label for="fn">First name</label><input id="fn" type="text" autocomplete="given-name" required></div>' +
+                 '<div class="field"><label for="em">Email</label><input id="em" type="email" autocomplete="email" required></div></div>' : "") +
+          '<button class="btn" type="submit">' + (ask ? "Send me my breakdown" : "See my full breakdown") + '</button>' +
+          '<div class="err" id="err" role="alert"></div>' +
+          (ask ? '<p class="small">' + esc(S.unlockNote) + ' ' + esc(S.privacyNote) + '</p>' : "") +
+        '</form>' +
+      '</div>' +
+      '<div class="actions"><button class="linkish" id="again">Retake the quiz</button></div>', "top");
+    document.getElementById("again").onclick = restart;
     document.getElementById("lead").onsubmit = function (e) {
       e.preventDefault();
+      if (!ask) return showResult(result);
       var name = document.getElementById("fn").value.trim(), email = document.getElementById("em").value.trim(), err = document.getElementById("err");
       if (!name) { err.textContent = "Please add your first name."; return; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = "Please check your email address."; return; }
       lead.name = name;
       var btn = e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "One moment…";
-      send(name, email).then(function () { showResult(result, false); });
+      send(name, email).then(function () { showResult(result); });
     };
   }
+
+  // A shared link shows only the result's name, with an invitation to take the quiz.
+  function sharedView(key) {
+    show(heroCard(key, "A friend's selling personality is") +
+      '<div class="panel center"><h2>What\'s yours?</h2><p>Answer ' + QS.length + ' quick questions to find the place to sell your art that suits you best.</p>' +
+      '<button class="btn" id="again">Take the quiz</button></div>', "top");
+    document.getElementById("again").onclick = restart;
+  }
+
+  function restart() { try { history.replaceState(null, "", location.pathname); } catch (x) {} breatherSeen = false; lead.name = ""; intro(); }
 
   function send(name, email) {
     if (!S.signupUrl) return Promise.resolve();
@@ -309,32 +379,37 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
     return Promise.race([fetch(S.signupUrl, { method: "POST", mode: "no-cors", body: body }).catch(function () {}), timeout]);
   }
 
-  function showResult(r, shared) {
+  // Step 2: the full breakdown.
+  function showResult(r) {
     var o = OUT[r.top], ru = OUT[r.runnerUp], c = colorVar(r.top);
     var mix = r.ranked ? '<div class="panel"><p class="eyebrow">Your selling mix</p><h2>How you match all six</h2><div class="mix">' +
       r.ranked.map(function (x, i) {
         return '<div class="mix-row' + (i === 0 ? " top" : "") + '"><span>' + esc(OUT[x.key].name) + '</span><div class="track"><i data-w="' + x.pct + '" style="background:' + colorVar(x.key) + '"></i></div><b>' + x.pct + '%</b></div>';
       }).join("") + '</div></div>' : "";
     show(
-      '<div class="card hero" style="--oc:' + c + '">' + shapes(true) +
-        '<p class="byline">' + esc(S.byline) + '</p>' +
-        '<p class="you-are">' + (shared ? "Their selling personality is" : (lead.name ? esc(lead.name) + ", you're" : "You're")) + '</p>' +
-        '<h1>' + esc(o.name) + '</h1>' +
-        '<span class="place">Best place to sell: ' + esc(o.place) + '</span>' +
-        '<p class="tagline">' + esc(o.tagline) + '</p>' +
-      '</div>' +
+      heroCard(r.top, lead.name ? esc(lead.name) + ", you're" : "You're") +
       '<div class="panel"><p class="eyebrow">Your selling personality</p><p>' + esc(o.profile) + '</p><ul class="chips">' + o.traits.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + '</ul></div>' +
       '<div class="two"><div class="panel"><p class="eyebrow">Why it suits you</p><p>' + esc(o.whyItFits) + '</p></div>' +
       '<div class="panel"><p class="eyebrow">Watch out for</p><p>' + esc(o.watchOut) + '</p></div></div>' +
       '<div class="panel"><p class="eyebrow">Your first three steps</p><ol class="steps">' + o.steps.map(function (s) { return "<li><span>" + esc(s) + "</span></li>"; }).join("") + '</ol></div>' +
-      (ru ? '<div class="panel"><p class="eyebrow">Your runner-up</p><h2>A streak of ' + esc(ru.name) + '</h2><p>You also lean towards <strong>' + esc(ru.place.toLowerCase()) + '</strong>. ' + esc(ru.tagline) + ' Many makers combine two ways of selling, and this one pairs well with your main result.</p></div>' : "") +
+      '<div class="panel checklist" id="checklist"><div class="cl-head"><div><p class="eyebrow">Your free checklist</p><h2>' + esc(o.checklist.title) + '</h2></div>' +
+        '<button class="btn ghost small-btn" id="print">Print or save as PDF</button></div>' +
+        '<p class="cl-sub print-only">' + esc(o.name) + ' · ' + esc(o.place) + '</p>' +
+        '<ul class="cl">' + o.checklist.items.map(function (t, i) { return '<li><input type="checkbox" id="cl' + i + '"><label for="cl' + i + '">' + esc(t) + '</label></li>'; }).join("") + '</ul>' +
+        '<p class="cl-foot print-only">' + esc(S.byline) + '</p></div>' +
+      (ru ? '<div class="panel"><p class="eyebrow">Your runner-up</p><h2>A streak of ' + esc(ru.name) + '</h2><p>You also lean towards <strong>' + esc(ru.place) + '</strong>. ' + esc(ru.tagline) + ' Many makers combine two ways of selling, and this one pairs well with your main result.</p></div>' : "") +
       mix +
       '<div class="upsell" style="--oc:' + c + '"><div class="book" aria-hidden="true"></div><div class="u-body"><p class="eyebrow">Ready for the next step?</p><h2>' + esc(o.guide.title) + '</h2><p>' + esc(o.guide.blurb) + '</p><p class="price">' + esc(o.guide.price) + '</p>' +
         '<a class="btn" href="' + esc(o.guide.url) + '">Get the guide</a></div></div>' +
-      '<div class="actions">' + (shared ? '<button class="btn dark" id="again">Take the quiz yourself</button>' : '<button class="btn dark" id="share">Share my result</button><button class="btn ghost" id="again">Retake the quiz</button>') + '<span class="toast" id="toast" role="status"></span></div>' +
+      '<div class="actions">' + '<button class="btn dark" id="share">Share my result</button><button class="btn ghost" id="again">Retake the quiz</button>' + '<span class="toast" id="toast" role="status"></span></div>' +
       '<footer>' + esc(S.byline) + '</footer>', "top");
     requestAnimationFrame(function () { setTimeout(function () { stage.querySelectorAll(".track i").forEach(function (i) { i.style.width = i.dataset.w + "%"; }); }, 120); });
-    document.getElementById("again").onclick = function () { try { history.replaceState(null, "", location.pathname); } catch (x) {} breatherSeen = false; intro(); };
+    document.getElementById("again").onclick = restart;
+    document.getElementById("print").onclick = function () {
+      document.body.classList.add("printing");
+      window.print();
+      setTimeout(function () { document.body.classList.remove("printing"); }, 500);
+    };
     var share = document.getElementById("share");
     if (share) share.onclick = function () {
       var url = location.origin + location.pathname + "?result=" + r.top, text = "I'm " + o.name + "! Find out where you should sell your art:";
@@ -353,7 +428,7 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
 
   /* ---------- start: a shared result link opens that result, otherwise the welcome screen ---------- */
   var params = new URLSearchParams(location.search), shared = params.get("result");
-  if (shared && OUT[shared]) showResult({ top: shared, runnerUp: OUT[params.get("also")] ? params.get("also") : null }, true);
+  if (shared && OUT[shared]) sharedView(shared);
   else intro();
 })();
 </script>
