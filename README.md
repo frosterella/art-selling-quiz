@@ -1,6 +1,6 @@
 # Where Should You Sell Your Art?
 
-A personality-quiz lead magnet for artists and makers. Ten questions, shown one at a time, lead to one of six selling personalities:
+A personality-quiz lead magnet for artists and makers. Eleven questions, shown one at a time, lead to one of six selling personalities:
 
 | Result | Best place to sell |
 |---|---|
@@ -9,7 +9,7 @@ A personality-quiz lead magnet for artists and makers. Ten questions, shown one 
 | The Studio Devotee | Galleries & representation |
 | The Production Pro | Wholesale, gift shops & boutiques |
 | The Online Independent | Your own website, Etsy & social media |
-| The Custom Collaborator | Commissions & custom work |
+| The Custom Collaborator | Commissions, interior designers & art consultants |
 
 Each result shows a personality profile, why that way of selling suits them, what to watch out for, three first steps, a runner-up, their match with all six, and a link to a $27 guide.
 

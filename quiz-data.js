@@ -11,7 +11,7 @@ window.QUIZ = {
   settings: {
     title: "Where Should You Sell Your Art?",
     byline: "Art Selling Personality Quiz · by Michelle Frost",
-    intro: "Craft markets, cafés, galleries, gift shops, online or commissions? Answer ten quick questions about how you like to work and live, and find out which way of selling suits your personality.",
+    intro: "Craft markets, cafés, galleries, gift shops, online or commissions? Answer 11 quick questions about how you like to work and live, and find out which way of selling suits your personality.",
     // A short pause screen shown after this question number (0 to turn it off).
     breatherAfter: 5,
     // Where the name + email are sent before the result is shown.
@@ -108,25 +108,25 @@ window.QUIZ = {
     },
     commission: {
       name: "The Custom Collaborator",
-      place: "Commissions & custom work",
+      place: "Commissions, interior designers & art consultants",
       color: "rose",
       tagline: "You make your best work when it means something to someone.",
-      profile: "You're a people person, but one to one rather than in crowds. You love hearing someone's story and turning it into something they'll treasure: a pet portrait, a wedding gift, a family heirloom. Meaningful connection matters more to you than selling lots, and a happy tearful client makes your whole month.",
-      traits: ["Empathetic listener", "Loves stories and meaning", "Enjoys a creative brief", "Thrives on one-to-one connection"],
-      whyItFits: "Commissions are sold before you make them. You're paid (usually with a deposit up front), the buyer gets something personal, and word of mouth does your marketing: every happy client tells their friends.",
-      watchOut: "Without clear boundaries, commissions can eat your time and your creative energy. Offer a set menu of sizes and prices, take a non-refundable deposit, limit revisions, and put it all in writing.",
+      profile: "You're a people person, but one to one rather than in crowds. You love a creative brief: hearing someone's story, or seeing the room a piece is meant for, and making something that fits perfectly. That might be a pet portrait or a family heirloom, or a large piece an interior designer has chosen for a client's home. Meaningful connection matters more to you than selling lots, and a delighted client makes your whole month.",
+      traits: ["Empathetic listener", "Loves a creative brief", "Easy to work with", "Thrives on one-to-one connection"],
+      whyItFits: "Commissions are sold before you make them. You're paid (usually with a deposit up front) and the buyer gets something personal. Interior designers, art consultants and home stagers are always looking for artists who can work to a brief, size and colour palette. One good designer relationship can bring you repeat projects for years, and every happy private client tells their friends.",
+      watchOut: "Without clear boundaries, commissions can eat your time and your creative energy. Offer a set menu of sizes and prices, take a non-refundable deposit, limit revisions, and put it all in writing. Designers usually expect a trade discount (often 10–20%), so build it into your prices from the start.",
       steps: [
         "Decide what you'll offer (subjects, sizes, turnaround) and set your prices.",
         "Make two or three sample pieces for friends or family to use as examples.",
-        "Create a simple commission page or enquiry form, then tell everyone you know you're taking commissions."
+        "Create a simple commission page with your prices and examples, then introduce yourself to two or three local interior designers or home stagers."
       ],
-      guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing, contracts and deposits, and handling clients with confidence.", price: "$27", url: "#" }
+      guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing and deposits, working with interior designers, and handling clients with confidence.", price: "$27", url: "#" }
     }
   },
 
   /* ---------- The questions (one per screen) ----------
      Each question can show a picture above it:
-       art: "sunrise"            a built-in illustration (sunrise, speech, shapes, eye, star, ledger, repeat, calendar, hearts, envelope)
+       art: "sunrise"            a built-in illustration (sunrise, speech, shapes, eye, star, ledger, laptop, repeat, calendar, hearts, envelope)
        image: "photos/q1.jpg"    your own photo or image instead (add imageAlt: "what the picture shows")
        leave both out            no picture
      Add or remove questions freely; the scoring adjusts itself. Run `node test-scoring.js` afterwards to check the balance.
@@ -193,6 +193,16 @@ window.QUIZ = {
       ]
     },
     {
+      art: "laptop",
+      q: "Be honest: how do you feel about technology?",
+      a: [
+        { t: "I love it. Building a website, editing photos and trying new apps is fun", s: { online: 2, wholesale: 1 } },
+        { t: "I'm happy with email and sharing good photos of my work with clients", s: { commission: 2, online: 1 } },
+        { t: "Basics only. I'd rather be out in my real-life community than scrolling", s: { cafe: 2, market: 1 } },
+        { t: "I'd much rather someone else dealt with it", s: { gallery: 2, wholesale: 1 } }
+      ]
+    },
+    {
       art: "repeat",
       q: "Making the same design 50 times sounds…",
       a: [
@@ -218,7 +228,7 @@ window.QUIZ = {
       a: [
         { t: "Friendly regulars who come back to see what's new", s: { market: 2, cafe: 1 } },
         { t: "A collector who treasures my piece, even if we never meet", s: { gallery: 2, online: 1 } },
-        { t: "One person whose idea I bring to life", s: { commission: 2, market: 1 } },
+        { t: "A client or interior designer I work with closely on a piece for a special space", s: { commission: 2, market: 1 } },
         { t: "Shop owners who reorder every season", s: { wholesale: 2, gallery: 1 } }
       ]
     },
