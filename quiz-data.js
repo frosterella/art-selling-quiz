@@ -11,7 +11,7 @@ window.QUIZ = {
   settings: {
     title: "Where Should You Sell Your Art?",
     byline: "Art Selling Personality Quiz · by Michelle Frost",
-    intro: "Craft markets, cafés, galleries, gift shops, online or commissions? Answer 11 quick questions about how you like to work and live, and find out which way of selling suits your personality.",
+    intro: "For artists, makers and creatives of every kind. Craft markets, cafés, galleries, gift shops, online or commissions? Answer 11 quick questions about how you like to work and live, and find out which way of selling suits your personality. There's no single right answer: it's about getting your work in front of the right buyers, in a way that suits you.",
     // A short pause screen shown after this question number (0 to turn it off).
     breatherAfter: 5,
     // Where the name + email are sent before the result is shown.
