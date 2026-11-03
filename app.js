@@ -25,6 +25,12 @@ window.ArtQuiz.mount = function (host, root) {
     var f = stage.querySelector("[data-focus]");
     if (f) f.focus({ preventScroll: true });
   }
+  // A short note from Michelle, used where people make a decision.
+  function creator(text) {
+    if (!text) return "";
+    var initials = (S.creatorName || "").split(" ").map(function (w) { return w.charAt(0); }).join("").slice(0, 2);
+    return '<div class="creator"><span class="avatar" aria-hidden="true">' + esc(initials) + '</span><p><span class="cq">\u201C' + esc(text) + '\u201D</span><span class="who">' + esc(S.creatorName || "") + '</span></p></div>';
+  }
   function shapes(dot) { return '<span class="shape s-sun" aria-hidden="true"></span><span class="shape s-arc" aria-hidden="true"></span>' + (dot ? '<span class="shape s-dot" aria-hidden="true"></span>' : ""); }
   function colorVar(k) { return "var(--" + (OUT[k].color || "teal") + ")"; }
 
@@ -141,6 +147,7 @@ window.ArtQuiz.mount = function (host, root) {
           '<li>Your runner-up, and how you match all six</li>' +
           '<li class="bonus"><span><strong>Free printable:</strong> ' + esc(o.checklist.title) + '</span></li>' +
         '</ul>' +
+        creator(S.creatorNote) +
         '<form id="lead" novalidate>' +
           (ask ? '<div class="fields"><div class="field"><label for="fn">First name</label><input id="fn" type="text" autocomplete="given-name" required></div>' +
                  '<div class="field"><label for="em">Email</label><input id="em" type="email" autocomplete="email" required></div></div>' : "") +
@@ -253,7 +260,7 @@ window.ArtQuiz.mount = function (host, root) {
         '<ul class="cl">' + o.checklist.items.map(function (t, i) { return '<li><input type="checkbox" id="cl' + i + '"><label for="cl' + i + '">' + esc(t) + '</label></li>'; }).join("") + '</ul></div>' +
       (ru ? '<div class="panel"><p class="eyebrow">Your runner-up</p><h2>A streak of ' + esc(ru.name) + '</h2><p>You also lean towards <strong>' + esc(ru.place) + '</strong>. ' + esc(ru.tagline) + ' Many makers combine two ways of selling, and this one pairs well with your main result.</p></div>' : "") +
       mix +
-      '<div class="upsell" style="--oc:' + c + '"><div class="book" aria-hidden="true"></div><div class="u-body"><p class="eyebrow">Ready for the next step?</p><h2>' + esc(o.guide.title) + '</h2><p>' + esc(o.guide.blurb) + '</p><p class="price">' + esc(o.guide.price) + '</p>' +
+      '<div class="upsell" style="--oc:' + c + '"><div class="book" aria-hidden="true"></div><div class="u-body"><p class="eyebrow">Ready for the next step?</p><h2>' + esc(o.guide.title) + '</h2><p>' + esc(o.guide.blurb) + '</p>' + creator(S.guideNote) + '<p class="price">' + esc(o.guide.price) + '</p>' +
         '<a class="btn" id="guide" href="' + esc(guideUrl(o.guide.url)) + '">Get the guide</a></div></div>' +
       '<div class="actions">' + '<button class="btn dark" id="share">Share my result</button><button class="btn ghost" id="again">Retake the quiz</button>' + '<span class="toast" id="toast" role="status"></span></div>' +
       '<footer>' + esc(S.byline) + '</footer>', "top");

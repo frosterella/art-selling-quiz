@@ -31,6 +31,10 @@ window.QUIZ = {
     currency: "CAD",
     // Shown on the unlock screen. Only promise an emailed copy once your email tool sends one.
     unlockNote: "I'll also email you a copy, so you can come back to it.",
+    // Your story, shown where people decide: the email step and the guide offer.
+    creatorName: "Michelle Frost",
+    creatorNote: "I tried selling my art in many ways that didn't feel right. When I leaned into what suits me, I went from five figures a year to five figures a month. This is the quiz I wish I'd had.",
+    guideNote: "This is the guide I wish I'd had when I started. Selling the way that suits you changes everything.",
     privacyNote: "You'll also get my emails about selling your art. Unsubscribe any time."
   },
 
