@@ -14,14 +14,18 @@ window.QUIZ = {
     intro: "For artists, makers and creatives of every kind. Craft markets, cafés, galleries, gift shops, online or commissions? Answer 11 quick questions about how you like to work and live, and find out which way of selling suits your personality. There's no single right answer: it's about getting your work in front of the right buyers, in a way that suits you.",
     // A short pause screen shown after this question number (0 to turn it off).
     breatherAfter: 5,
-    // Where the name + email are sent before the result is shown.
-    // Paste a form endpoint from your email tool or a Zapier/Make webhook.
+    // Where the name + email are sent: your Phantom (GoHighLevel) workflow's Inbound Webhook URL.
     // While this is "", there is no email step: people go straight to their result.
+    // You can also set it on the embed snippet instead: <art-selling-quiz signup-url="…">.
     signupUrl: "",
-    // Field names that endpoint expects. The defaults suit Kit (ConvertKit) forms; a webhook takes any names.
-    fieldEmail: "email_address",
-    fieldName: "fields[first_name]",
-    fieldResult: "fields[quiz_result]",
+    // Field names sent to the webhook. Also sent: quiz_result_key (e.g. "market"), quiz_runner_up and source.
+    fieldEmail: "email",
+    fieldName: "first_name",
+    fieldResult: "quiz_result",
+    // Adds the person's email and first name to each guide's checkout link, so the order form is pre-filled.
+    prefillCheckout: true,
+    // Currency reported to the Meta pixel when someone clicks through to buy a guide.
+    currency: "CAD",
     // Shown on the unlock screen. Only promise an emailed copy once your email tool sends one.
     unlockNote: "I'll also email you a copy, so you can come back to it.",
     privacyNote: "You'll also get my emails about selling your art. Unsubscribe any time."
