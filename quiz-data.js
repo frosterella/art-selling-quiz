@@ -26,7 +26,7 @@ window.QUIZ = {
     fieldName: "first_name",
     fieldResult: "quiz_result",
     // Adds the person's email and first name to each guide's checkout link, so the order form is pre-filled.
-    prefillCheckout: true,
+    prefillCheckout: false,
     // Currency reported to the Meta pixel when someone clicks through to buy a guide.
     currency: "CAD",
     // Shown on the unlock screen. Only promise an emailed copy once your email tool sends one.
@@ -66,7 +66,7 @@ window.QUIZ = {
           "Afterwards, note what sold, what people asked about, and your takings minus costs"
         ]
       },
-      guide: { title: "The Market Maker's Guide", blurb: "Booth setup, pricing that sells, what to bring and how to turn browsers into buyers.", price: "$27", url: "#" }
+      guide: { title: "The Market Maker's Guide", blurb: "Booth setup, pricing that sells, what to bring and how to turn browsers into buyers.", price: "$27", url: "https://michellefrost.com/products/market-maker-guide" }
     },
     cafe: {
       name: "The Local Favourite",
@@ -98,7 +98,7 @@ window.QUIZ = {
           "Check in every few weeks and swap out pieces that aren't getting attention"
         ]
       },
-      guide: { title: "The Local Favourite's Guide", blurb: "How to pitch cafés, what to agree in writing, and how to turn a wall into sales and followers.", price: "$27", url: "#" }
+      guide: { title: "The Local Favourite's Guide", blurb: "How to pitch cafés, what to agree in writing, and how to turn a wall into sales and followers.", price: "$27", url: "https://michellefrost.com/products/local-favourite-guide" }
     },
     gallery: {
       name: "The Studio Devotee",
@@ -130,7 +130,7 @@ window.QUIZ = {
           "Follow up politely, and keep making while you wait"
         ]
       },
-      guide: { title: "The Studio Devotee's Guide", blurb: "Building a body of work, your first artist CV, and approaching galleries without the cringe.", price: "$27", url: "#" }
+      guide: { title: "The Studio Devotee's Guide", blurb: "Building a body of work, your first artist CV, and approaching galleries without the cringe.", price: "$27", url: "https://michellefrost.com/products/studio-devotee-guide" }
     },
     wholesale: {
       name: "The Production Pro",
@@ -162,7 +162,7 @@ window.QUIZ = {
           "Consider consignment for your first shop, with a written agreement"
         ]
       },
-      guide: { title: "The Production Pro's Guide", blurb: "Wholesale pricing, line sheets, approaching shops and keeping up with reorders.", price: "$27", url: "#" }
+      guide: { title: "The Production Pro's Guide", blurb: "Wholesale pricing, line sheets, approaching shops and keeping up with reorders.", price: "$27", url: "https://michellefrost.com/products/production-pro-guide" }
     },
     online: {
       name: "The Online Independent",
@@ -194,7 +194,7 @@ window.QUIZ = {
           "Add new work regularly so returning visitors find something fresh"
         ]
       },
-      guide: { title: "The Online Independent's Guide", blurb: "Choosing a platform, product photos that sell, and getting your first online buyers.", price: "$27", url: "#" }
+      guide: { title: "The Online Independent's Guide", blurb: "Choosing a platform, product photos that sell, and getting your first online buyers.", price: "$27", url: "https://michellefrost.com/products/online-independent-guide" }
     },
     commission: {
       name: "The Custom Collaborator",
@@ -226,7 +226,7 @@ window.QUIZ = {
           "Ask happy clients for a testimonial and a referral"
         ]
       },
-      guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing and deposits, working with interior designers, and handling clients with confidence.", price: "$27", url: "#" }
+      guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing and deposits, working with interior designers, and handling clients with confidence.", price: "$27", url: "https://michellefrost.com/products/custom-collaborator-guide" }
     }
   },
 
