@@ -14,6 +14,9 @@ window.QUIZ = {
     intro: "For artists, makers and creatives of every kind. Craft markets, cafés, galleries, gift shops, online or commissions? Answer 11 quick questions about how you like to work and live, and find out which way of selling suits your personality. There's no single right answer: it's about getting your work in front of the right buyers, in a way that suits you.",
     // A short pause screen shown after this question number (0 to turn it off).
     breatherAfter: 5,
+    // Where sign-ups go. "shopify" signs people up as subscribers in your Shopify store (the quiz must be on a page of that store).
+    // Can also be set on the snippet: <art-selling-quiz signup="shopify">.
+    signupTo: "",
     // Where the name + email are sent: your Phantom (GoHighLevel) workflow's Inbound Webhook URL.
     // While this is "", there is no email step: people go straight to their result.
     // You can also set it on the embed snippet instead: <art-selling-quiz signup-url="…">.

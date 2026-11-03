@@ -26,6 +26,19 @@ The full breakdown shows a personality profile, why that way of selling suits th
 - `index.html`: the standalone quiz page.
 - `test-scoring.js`: checks the quiz is balanced. Run `node test-scoring.js` after changing questions or scoring.
 
+## Putting the quiz on your Shopify store (recommended)
+
+1. In Shopify admin: **Online Store → Pages → Add page**. Title it (e.g. "Where should you sell your art?").
+2. In the content box, click **Show HTML** (the `<>` button) and paste:
+
+   ```html
+   <art-selling-quiz signup="shopify" min-height="auto"></art-selling-quiz>
+   <script src="https://frosterella.github.io/art-selling-quiz/embed.js"></script>
+   ```
+3. Save. The quiz now lives at `michellefrost.com/pages/<page-handle>`, inside your theme's header and footer.
+
+Sign-ups become Shopify email subscribers, tagged `art-quiz`, `quiz-<result>` (e.g. `quiz-market`) and `quiz-also-<runner-up>`. A Shopify marketing automation triggered by those tags sends each result's emails.
+
 ## Putting the quiz on a Phantom (GoHighLevel) funnel page
 
 1. **Point a subdomain at GitHub Pages** (e.g. `quiz.michellefrost.com`): add a CNAME record for `quiz` pointing to `frosterella.github.io` where your DNS is managed, then add the domain under this repository's Settings → Pages → Custom domain and tick "Enforce HTTPS". This hosts the quiz files.

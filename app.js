@@ -8,6 +8,9 @@ window.ArtQuiz.mount = function (host, root) {
   // Settings can be overridden on the element itself, e.g. <art-selling-quiz signup-url="…">.
   var S = Object.assign({}, Q.settings);
   if (host.getAttribute("signup-url")) S.signupUrl = host.getAttribute("signup-url");
+  // signup="shopify": sign people up as Shopify email subscribers. Only works when the quiz sits on a page of the Shopify store itself.
+  if (host.getAttribute("signup")) S.signupTo = host.getAttribute("signup");
+  var collectsEmail = S.signupTo === "shopify" || !!S.signupUrl;
   var stage = root.getElementById("stage");
   var answers = [], current = 0, result = null, lead = { name: "", email: "" };
   function $(id) { return root.getElementById(id); }
@@ -126,7 +129,7 @@ window.ArtQuiz.mount = function (host, root) {
 
   // Step 1: reveal the result's name, then offer the full breakdown and checklist in exchange for an email.
   function reveal() {
-    var o = OUT[result.top], ask = !!S.signupUrl;
+    var o = OUT[result.top], ask = collectsEmail;
     show(heroCard(result.top, "You're") +
       '<div class="unlock" style="--oc:' + colorVar(result.top) + '">' +
         '<p class="eyebrow">Your full breakdown is ready</p>' +
@@ -170,7 +173,27 @@ window.ArtQuiz.mount = function (host, root) {
 
   function restart() { try { history.replaceState(null, "", location.pathname); } catch (x) {} breatherSeen = false; lead.name = ""; intro(); }
 
+  // Signs the person up as a Shopify subscriber, using the store's own newsletter sign-up (the same as a footer sign-up form).
+  // Tags: "art-quiz", the result (e.g. "quiz-market") and the runner-up (e.g. "quiz-also-online"), which the email automation uses.
+  function sendToShopify(name, email) {
+    var body = new URLSearchParams();
+    body.append("form_type", "customer");
+    body.append("utf8", "\u2713");
+    body.append("contact[email]", email);
+    body.append("contact[first_name]", name);
+    var tags = ["art-quiz", "quiz-" + result.top];
+    if (result.runnerUp) tags.push("quiz-also-" + result.runnerUp);
+    body.append("contact[tags]", tags.join(", "));
+    track("Lead", { content_name: OUT[result.top].name });
+    var timeout = new Promise(function (r) { setTimeout(r, 6000); });
+    var post = fetch("/contact#contact_form", { method: "POST", body: body, credentials: "same-origin" })
+      .then(function (res) { if (/challenge/.test(res.url) && window.console) console.warn("Shopify asked for a captcha; the sign-up may not have been saved."); })
+      .catch(function () {});
+    return Promise.race([post, timeout]);
+  }
+
   function send(name, email) {
+    if (S.signupTo === "shopify") return sendToShopify(name, email);
     if (!S.signupUrl) return Promise.resolve();
     var body = new URLSearchParams();
     body.append(S.fieldEmail, email);
