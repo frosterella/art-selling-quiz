@@ -74,35 +74,35 @@ window.QUIZ = {
     },
     cafe: {
       name: "The Local Favourite",
-      place: "Coffee shops, cafés & community spaces",
+      place: "Around town: cafés, local businesses & community spaces",
       color: "mustard",
       tagline: "You want your work out in your community, without having to stand beside it.",
-      profile: "You love being part of your local scene. You know the barista's name and you'd rather your work did the talking. Seeing your piece on the wall of a favourite café, knowing your neighbours enjoy it every day, is your idea of success. You value visibility and community more than big sales numbers, at least for now.",
+      profile: "You love being part of your local scene. You know the barista's name and you'd rather your work did the talking. Seeing your piece on the wall of a favourite café, bakery or local business, knowing your neighbours enjoy it every day, is your idea of success. You value visibility and community more than big sales numbers, at least for now.",
       traits: ["Community-minded", "Social in small doses", "Happy at a gentle pace", "Wants to be known locally"],
-      whyItFits: "Cafés, restaurants, libraries and salons have walls to fill and customers who linger. It's a low-pressure way to build a local following, get your name known, and practise pricing and presenting your work. It's perfect while you're moving from hobby to selling.",
-      watchOut: "Sales can be slow, and café walls come with sunlight and splashes. Agree the commission, hanging dates, insurance and how sales are handled in writing. Treat the wall as an advert as well as a shop: add a QR code that leads to your website or Instagram.",
+      whyItFits: "Busy local spots, from cafés and bakeries to florists, vet clinics and client-facing offices, have walls to fill and a steady stream of people who linger. It's a low-pressure way to build a local following, get your name known, and practise pricing and presenting your work. It's perfect while you're moving from hobby to selling.",
+      watchOut: "Sales can be slow, and busy spaces come with sunlight, steam and bumps. Choose venues with real foot traffic, and agree the commission, hanging dates, insurance and how sales are handled in writing. Treat the wall as an advert as well as a shop: add a QR code that leads to your email sign-up.",
       steps: [
-        "List five places you already love that show local art.",
+        "List five busy local places whose customers would love your work.",
         "Prepare a cohesive set of 6–10 pieces, ready to hang, with labels and prices.",
         "Visit at a quiet time of day and ask the owner how their art wall works."
       ],
       checklist: {
         title: "The Local Favourite's Getting-Started Checklist",
         items: [
-          "List five cafés, restaurants or community spaces near you that show local art",
-          "Visit each one and note the wall space, the lighting and the art already there",
+          "List five busy local businesses or community spaces whose customers match your work",
+          "Visit each one and note the foot traffic, the wall space, the lighting and the art already there",
           "Choose 6–10 pieces that hang well together as a set",
           "Get them ready to hang: wired, framed if needed, and checked for damage",
           "Make a label for each with title, medium, size, price and your contact details",
-          "Add a QR code that leads to your website, Instagram or email list",
+          "Add a QR code that leads to your email sign-up page",
           "Ask the owner about commission, hanging dates and how sales are handled",
           "Put the agreement in writing, including who covers damage or theft",
-          "Keep an inventory with a photo of every piece you leave",
-          "Share the show online and invite friends to visit",
+          "Keep an inventory with a photo of every piece, signed by you and the owner",
+          "Send the venue photos and captions to share, and invite friends and family to visit",
           "Check in every few weeks and swap out pieces that aren't getting attention"
         ]
       },
-      guide: { title: "The Local Favourite's Guide", blurb: "How to pitch cafés, what to agree in writing, and how to turn a wall into sales and followers.", price: "$27", url: "https://michellefrost.com/products/local-favourite-guide" }
+      guide: { title: "The Local Favourite's Guide", blurb: "How to find busy local venues that suit your work, what to agree in writing, and how to turn a wall into sales and email sign-ups.", price: "$27", url: "https://michellefrost.com/products/local-favourite-guide" }
     },
     gallery: {
       name: "The Studio Devotee",

@@ -5,7 +5,7 @@ A personality-quiz lead magnet for artists and makers. Eleven questions, shown o
 | Result | Best place to sell |
 |---|---|
 | The Market Maker | Craft fairs, farmers markets & pop-ups |
-| The Local Favourite | Coffee shops, cafés & community spaces |
+| The Local Favourite | Around town: cafés, local businesses & community spaces |
 | The Studio Devotee | Galleries & representation |
 | The Production Pro | Wholesale, gift shops & boutiques |
 | The Online Independent | Your own website, Etsy & social media |
