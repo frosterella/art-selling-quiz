@@ -242,6 +242,14 @@ window.ArtQuiz.mount = function (host, root) {
     w.document.close();
   }
 
+  // "Price with confidence" panel, linking to The Profitable Artist Equation (settings.pricing).
+  function pricingPanel() {
+    var pr = S.pricing;
+    if (!pr || !pr.url) return "";
+    return '<div class="panel pricing"><p class="eyebrow">' + esc(pr.eyebrow) + '</p><h2>' + esc(pr.title) + '</h2><p>' + esc(pr.text) + '</p>' +
+      '<p class="pricing-cta"><a class="btn ghost" href="' + esc(pr.url) + '" target="_blank" rel="noopener">' + esc(pr.label) + '</a></p></div>';
+  }
+
   // Step 2: the full breakdown.
   function showResult(r) {
     var o = OUT[r.top], ru = OUT[r.runnerUp], c = colorVar(r.top);
@@ -258,6 +266,7 @@ window.ArtQuiz.mount = function (host, root) {
       '<div class="panel checklist" id="checklist"><div class="cl-head"><div><p class="eyebrow">Your free checklist</p><h2>' + esc(o.checklist.title) + '</h2></div>' +
         '<button class="btn ghost small-btn" id="print">Print or save as PDF</button></div>' +
         '<ul class="cl">' + o.checklist.items.map(function (t, i) { return '<li><input type="checkbox" id="cl' + i + '"><label for="cl' + i + '">' + esc(t) + '</label></li>'; }).join("") + '</ul></div>' +
+      pricingPanel() +
       (ru ? '<div class="panel"><p class="eyebrow">Your runner-up</p><h2>A streak of ' + esc(ru.name) + '</h2><p>You also lean towards <strong>' + esc(ru.place) + '</strong>. ' + esc(ru.tagline) + ' Many makers combine two ways of selling, and this one pairs well with your main result.</p></div>' : "") +
       mix +
       '<div class="upsell" style="--oc:' + c + '"><div class="book" aria-hidden="true"></div><div class="u-body"><p class="eyebrow">Ready for the next step?</p><h2>' + esc(o.guide.title) + '</h2><p>' + esc(o.guide.blurb) + '</p>' + creator(S.guideNote) + '<p class="price">' + esc(o.guide.price) + '</p>' +

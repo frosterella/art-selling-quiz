@@ -168,6 +168,8 @@ input:focus { outline: none; border-color: var(--mustard); }
 .unlock .err { color: var(--orange); }
 .unlock .small { color: var(--muted); opacity: 1; }
 .panel.center { text-align: center; justify-items: center; }
+.panel.pricing { box-shadow: 0 0 0 1px var(--line), inset 0 6px 0 var(--mustard, #E2A72E); justify-items: start; }
+.panel.pricing .pricing-cta { margin: 4px 0 0; }
 .cl-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; flex-wrap: wrap; }
 .small-btn { padding: 9px 16px; font-size: 14px; }
 .cl { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }

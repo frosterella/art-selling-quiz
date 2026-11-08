@@ -35,7 +35,15 @@ window.QUIZ = {
     creatorName: "Michelle Frost",
     creatorNote: "I tried selling my art in many ways that didn't feel right. When I leaned into what suits me, I went from five figures a year to five figures a month. This is the quiz I wish I'd had.",
     guideNote: "This is the guide I wish I'd had when I started. Selling the way that suits you changes everything.",
-    privacyNote: "You'll also get my emails about selling your art. Unsubscribe any time."
+    privacyNote: "You'll also get my emails about selling your art. Unsubscribe any time.",
+    // Pricing panel on every result page, linking to The Profitable Artist Equation. Set url to "" to hide it.
+    pricing: {
+      eyebrow: "Price with confidence",
+      title: "Do your prices actually pay you?",
+      text: "Wherever you sell, every piece needs a floor price that covers your costs and a profit price that pays you properly. The Profitable Artist Equation works out both for every piece you make, so you can name your price with confidence.",
+      label: "Check your prices",
+      url: "https://michellefrost.com/pages/profitable-artist-equation"
+    }
   },
 
   /* ---------- The six outcomes ---------- */
@@ -57,15 +65,16 @@ window.QUIZ = {
       checklist: {
         title: "The Market Maker's Getting-Started Checklist",
         items: [
-          "Visit two or three markets as a shopper and note what sells, and at what price",
-          "Choose one beginner-friendly market and check its application dates and booth fee",
-          "Price every piece so it covers materials, your time and a share of the booth fee",
+          "Visit two or three markets as a shopper: note who the crowd is, what sells and at what price",
+          "Choose a market whose shoppers match your work and price range, and check dates and booth fees",
+          "For farmers markets, check whether they expect you every week for the season or quarter",
+          "Know your floor and your profit price for every piece before you write a price tag",
           "Build a range: small impulse buys, mid-priced pieces and a few showstoppers",
           "Make enough stock to fill your table, plus extras of your likely best-sellers",
-          "Practise your table setup at home, using crates or stands to add height",
-          "Label every price clearly so shoppers don't have to ask",
-          "Set up a card reader and bring a float of small change",
-          "Bring business cards or a QR code that leads to your Instagram or email list",
+          "Practise your table setup at home, with clear price labels and some height",
+          "Set up a card reader, a float of small change and an email sign-up QR code",
+          "3–4 days before: post on social media, tag the market and email your list. Post again on the day",
+          "Check your business licence, tax registration and whether the market requires insurance",
           "Pack your kit: tent weights, tablecloth, bags, tape, water and snacks",
           "Afterwards, note what sold, what people asked about, and your takings minus costs"
         ]
@@ -90,15 +99,16 @@ window.QUIZ = {
         title: "The Local Favourite's Getting-Started Checklist",
         items: [
           "List five busy local businesses or community spaces whose customers match your work",
-          "Visit each one and note the foot traffic, the wall space, the lighting and the art already there",
-          "Choose 6–10 pieces that hang well together as a set",
-          "Get them ready to hang: wired, framed if needed, and checked for damage",
-          "Make a label for each with title, medium, size, price and your contact details",
-          "Add a QR code that leads to your email sign-up page",
+          "Visit each one and note the foot traffic, wall space, lighting and the art already there",
+          "Choose 6–10 pieces that hang well together, wired and ready to hang",
+          "Know your floor and your profit price for every piece, after the venue's commission",
+          "Label each piece with title, medium, size, price and a QR code to your email sign-up",
           "Ask the owner about commission, hanging dates and how sales are handled",
           "Put the agreement in writing, including who covers damage or theft",
-          "Keep an inventory with a photo of every piece, signed by you and the owner",
+          "Check your insurance covers your work while it hangs somewhere else",
+          "Keep an inventory with a photo of every piece, signed by you and the owner on hanging day",
           "Send the venue photos and captions to share, and invite friends and family to visit",
+          "Check your business licence and tax registration, and add a copyright line to every invoice",
           "Check in every few weeks and swap out pieces that aren't getting attention"
         ]
       },
@@ -122,15 +132,16 @@ window.QUIZ = {
         title: "The Studio Devotee's Getting-Started Checklist",
         items: [
           "Choose your focus: the subject, medium or style you want to be known for",
-          "Create a cohesive series of 10–15 pieces that clearly belong together",
-          "Photograph every piece square on, in even light",
-          "Write a short artist statement (about 150 words) and a bio",
-          "Start an artist CV, even if it's only a few lines for now",
-          "Keep an inventory: title, size, medium, date and price for every piece",
-          "Enter two or three local juried shows or open calls this year",
-          "Go to openings near you and note which galleries show work like yours",
+          "Create a cohesive series of 10–15 pieces and photograph each one square on, in even light",
+          "Write a short artist statement (about 150 words), a bio and a simple artist CV",
+          "Keep an inventory: title, size, medium, date, price and where each piece is",
+          "Know your floor and your profit price, and check they still work after a 40–50% commission",
+          "Go to openings and shortlist two or three true galleries that show work like yours",
           "Read each gallery's submission guidelines and follow them exactly",
-          "Check your prices still work for you after a 40–50% gallery commission",
+          "Before you sign, check exclusivity, how long work stays, rotation and who pays for what",
+          "Check your insurance covers your work in transit and on consignment",
+          "Keep building your own email list: the gallery's customer list isn't yours",
+          "Check your business licence and tax registration, and add a copyright line to every invoice",
           "Follow up politely, and keep making while you wait"
         ]
       },
@@ -155,15 +166,16 @@ window.QUIZ = {
         items: [
           "Choose 4–8 products you can make the same way every time",
           "Time yourself making a full batch, and cost every material",
-          "Set retail prices where half (the wholesale price) still covers costs, time and profit",
-          "Decide your minimum order and how shops reorder",
+          "Know your floor and your profit price at wholesale (usually half of retail) before you set retail",
+          "Decide your minimum order, payment terms and how shops reorder",
           "Test your packaging so products arrive safely and look good on a shelf",
           "Photograph every product on a plain background",
           "Make a simple line sheet: photos, product codes, wholesale and suggested retail prices",
-          "List ten local shops whose style matches yours",
+          "List ten local shops whose style and customers match yours",
           "Approach three of them, with samples if you can",
-          "Work out how much you can make each month before you say yes to orders",
-          "Consider consignment for your first shop, with a written agreement"
+          "Agree display, signage and business cards up front, and offer swaps for slow sellers",
+          "Check your business licence, tax registration and product liability insurance",
+          "Work out how much you can make each month before you say yes to orders"
         ]
       },
       guide: { title: "The Production Pro's Guide", blurb: "Wholesale pricing, line sheets, approaching shops and keeping up with reorders.", price: "$27", url: "https://michellefrost.com/products/production-pro-guide" }
@@ -185,17 +197,18 @@ window.QUIZ = {
       checklist: {
         title: "The Online Independent's Getting-Started Checklist",
         items: [
-          "Choose one place to start: Etsy for built-in shoppers or your own site for control",
+          "Choose where to start: your own site, Etsy or another marketplace, or online wholesale",
+          "Plan where your visitors will come from: even on a marketplace, bringing buyers is your job",
           "Photograph your ten best pieces in natural light",
-          "Write descriptions that tell each piece's story and give sizes and materials",
-          "Build packaging and shipping costs into your prices",
+          "Write descriptions that tell the story behind each piece, with sizes and materials",
+          "Know your floor and your profit price, including fees, packaging and shipping",
           "Write your shop policies: shipping times, returns and custom requests",
-          "Pick one social media platform and post there three times a week",
+          "Pick one social media platform and post three times a week, including \"this piece is available\" posts",
           "Start an email list and put the sign-up link on your shop and profile",
-          "Launch with what you have rather than waiting until it's perfect",
-          "Tell friends, family and past buyers that your shop is open",
-          "Check your shop stats once a month and note what people click on",
-          "Add new work regularly so returning visitors find something fresh"
+          "Find one person or business whose audience is your buyer, and plan a collaboration",
+          "Hand off what drains you: a website template, a bookkeeper or help with setup",
+          "Check your business licence and sales tax registration, and add a copyright line to invoices",
+          "Check your shop stats once a month, and add new work regularly"
         ]
       },
       guide: { title: "The Online Independent's Guide", blurb: "Choosing a platform, product photos that sell, and getting your first online buyers.", price: "$27", url: "https://michellefrost.com/products/online-independent-guide" }
@@ -217,17 +230,18 @@ window.QUIZ = {
       checklist: {
         title: "The Custom Collaborator's Getting-Started Checklist",
         items: [
-          "Decide what you'll offer: subjects, sizes and materials",
-          "Set a fixed price for each option so you're not quoting from scratch",
+          "Decide what you'll offer: subjects, sizes and materials, up to statement pieces",
+          "Know your floor and your profit price, and price the whole job: design, revisions, framing and delivery",
+          "Set starting prices for each option so you're not quoting from scratch",
           "Make two or three sample pieces to show what you do",
           "Write out your process: enquiry, deposit, sketch, final piece, delivery",
           "Decide your deposit (often 50%, non-refundable) and how many revisions you include",
-          "Create a simple agreement covering price, timeline, revisions and deposit",
-          "Make a commission page or enquiry form with examples and prices",
-          "Set your trade discount for interior designers (often 10–20%)",
-          "Introduce yourself to two or three local interior designers or home stagers",
-          "Photograph every finished commission, with the client's permission, for your portfolio",
-          "Ask happy clients for a testimonial and a referral"
+          "Create a simple agreement covering price, timeline, revisions, deposit and copyright",
+          "Make a commission page or enquiry form with examples and starting prices",
+          "Set your trade discount for interior designers and art consultants (often 10–20%)",
+          "Introduce yourself to two or three local designers, and to businesses that buy corporate gifts",
+          "Check your business licence, tax registration and insurance for work in progress",
+          "Photograph every finished commission, and ask happy clients for a testimonial and a referral"
         ]
       },
       guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing and deposits, working with interior designers, and handling clients with confidence.", price: "$27", url: "https://michellefrost.com/products/custom-collaborator-guide" }
