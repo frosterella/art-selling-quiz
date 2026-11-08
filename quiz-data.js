@@ -35,15 +35,7 @@ window.QUIZ = {
     creatorName: "Michelle Frost",
     creatorNote: "I tried selling my art in many ways that didn't feel right. When I leaned into what suits me, I went from five figures a year to five figures a month. This is the quiz I wish I'd had.",
     guideNote: "This is the guide I wish I'd had when I started. Selling the way that suits you changes everything.",
-    privacyNote: "You'll also get my emails about selling your art. Unsubscribe any time.",
-    // Pricing panel on every result page, linking to The Profitable Artist Equation. Set url to "" to hide it.
-    pricing: {
-      eyebrow: "Price with confidence",
-      title: "Do your prices actually pay you?",
-      text: "Wherever you sell, every piece needs a floor price that covers your costs and a profit price that pays you properly. The Profitable Artist Equation works out both for every piece you make, so you can name your price with confidence.",
-      label: "Check your prices",
-      url: "https://michellefrost.com/pages/profitable-artist-equation"
-    }
+    privacyNote: "You'll also get my emails about selling your art. Unsubscribe any time."
   },
 
   /* ---------- The six outcomes ---------- */
