@@ -205,7 +205,7 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
 .dossier { --oc: var(--teal); background: var(--surface); border-radius: 20px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 16px 34px rgba(42, 35, 32, .08); }
 .d-head { border-top: 8px solid var(--oc); padding: clamp(22px, 4vw, 36px) clamp(22px, 4vw, 36px) clamp(18px, 3vw, 26px); display: grid; gap: 18px; border-bottom: 2px solid var(--ink); }
 .d-head h2 { font-size: clamp(26px, 4.4vw, 36px); margin-top: 4px; }
-.d-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px 24px; margin: 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.d-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px 24px; margin: 0; }
 .d-meta div { min-width: 0; }
 .d-meta dt { font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .d-meta dd { margin: 4px 0 0; font-weight: 600; font-size: 17px; line-height: 1.3; }
@@ -223,3 +223,5 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
 .d-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; padding: 16px clamp(22px, 4vw, 36px); background: var(--bg); font-size: 15px; color: var(--muted); }
 .d-foot a { color: var(--ink); font-weight: 600; text-decoration: none; }
 @media (max-width: 640px) { .d-sec { grid-template-columns: 1fr; } .d-side { display: flex; gap: 12px; align-items: baseline; } .d-num { font-size: 26px; } }
+.hero.report .byline { font-size: 15px; letter-spacing: .14em; }
+.hero.report .you-are { font-size: 18px; opacity: .9; margin-bottom: -6px; }

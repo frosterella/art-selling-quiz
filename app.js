@@ -128,13 +128,13 @@ window.ArtQuiz.mount = function (host, root) {
     setTimeout(function () { clearInterval(t); reveal(); }, 2600);
   }
 
-  function heroCard(key, who) {
+  function heroCard(key, who, report) {
     var o = OUT[key];
-    return '<div class="card hero" style="--oc:' + colorVar(key) + '">' + shapes(true) +
-      '<p class="byline">' + esc(S.byline) + '</p>' +
+    return '<div class="card hero' + (report ? ' report' : '') + '" style="--oc:' + colorVar(key) + '">' + shapes(true) +
+      '<p class="byline">' + (report ? 'Your Selling Personality Report' : esc(S.byline)) + '</p>' +
       '<p class="you-are">' + who + '</p>' +
       '<h1>' + esc(o.name) + '</h1>' +
-      '<span class="place">Best place to sell: ' + esc(o.place) + '</span>' +
+      (report ? '' : '<span class="place">Best place to sell: ' + esc(o.place) + '</span>') +
       '<p class="tagline">' + esc(o.tagline) + '</p></div>';
   }
 
@@ -323,7 +323,7 @@ window.ArtQuiz.mount = function (host, root) {
       }).join("") + '</div>' : "";
     var report =
       '<article class="dossier" style="--oc:' + c + '">' +
-        '<header class="d-head"><div><p class="eyebrow">Your selling personality report</p><h2>' + esc(o.name) + '</h2></div>' +
+        '<header class="d-head">' +
           '<dl class="d-meta">' +
             '<div><dt>Best place to sell</dt><dd>' + esc(o.place) + '</dd></div>' +
             (ru ? '<div><dt>Runner-up</dt><dd>' + esc(ru.name) + '</dd></div>' : "") +
@@ -338,7 +338,7 @@ window.ArtQuiz.mount = function (host, root) {
         '<footer class="d-foot"><span>Prepared for you by ' + esc(S.creatorName || "Michelle Frost") + '</span><a href="#checklist" id="tocl">Your checklist is below &darr;</a></footer>' +
       '</article>';
     show(
-      heroCard(r.top, lead.name ? esc(lead.name) + ", you're" : "You're") +
+      heroCard(r.top, lead.name ? esc(lead.name) + ", you are:" : "You are:", true) +
       report +
       '<div class="panel checklist" id="checklist"><div class="cl-head"><div><p class="eyebrow">Your free checklist</p><h2>' + esc(o.checklist.title) + '</h2></div>' +
         '<button class="btn ghost small-btn" id="print">Print or save as PDF</button></div>' +
