@@ -345,12 +345,11 @@ window.ArtQuiz.mount = function (host, root) {
         '<ul class="cl">' + o.checklist.items.map(function (t, i) { return '<li><input type="checkbox" id="cl' + i + '"><label for="cl' + i + '">' + esc(t) + '</label></li>'; }).join("") + '</ul></div>' +
       '<div class="next" style="--oc:' + c + '"><p class="bridge">Your checklist tells you <em>what</em> to do. Your guide shows you <em>how</em>.</p>' +
         '<a class="btn next-btn" id="guide" href="' + esc(guideUrl(phantom && S.phantomGuideUrls && S.phantomGuideUrls[r.top] || o.guide.url)) + '">Next &rarr;</a></div>' +
-      '<div class="actions">' + '<button class="btn dark" id="share">Share my result</button><button class="btn ghost" id="again">Retake the quiz</button>' + '<span class="toast" id="toast" role="status"></span></div>' +
       '<footer>' + esc(S.byline) + '</footer>', "top");
     var tocl = $("tocl");
     if (tocl) tocl.onclick = function (e) { e.preventDefault(); var el = $("checklist"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); };
     requestAnimationFrame(function () { setTimeout(function () { stage.querySelectorAll(".track i").forEach(function (i) { i.style.width = i.dataset.w + "%"; }); }, 120); });
-    $("again").onclick = restart;
+    var again = $("again"); if (again) again.onclick = restart;
     $("print").onclick = function () { printChecklist(o); };
     $("guide").onclick = function () { track("InitiateCheckout", { content_name: o.guide.title, value: parseFloat(String(o.guide.price).replace(/[^0-9.]/g, "")) || 0, currency: S.currency || "CAD" }); };
     var share = $("share");
