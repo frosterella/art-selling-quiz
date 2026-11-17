@@ -307,19 +307,39 @@ window.ArtQuiz.mount = function (host, root) {
     w.document.close();
   }
 
-  // Step 2: the full breakdown.
+  // Step 2: the full breakdown, laid out as a personal selling report under the big result header.
+  function dSec(num, label, body) {
+    return '<section class="d-sec"><div class="d-side"><span class="d-num">' + num + '</span><span class="d-label">' + label + '</span></div><div class="d-body">' + body + '</div></section>';
+  }
   function showResult(r) {
     var o = OUT[r.top], ru = OUT[r.runnerUp], c = colorVar(r.top);
-    var mix = r.ranked ? '<div class="panel"><p class="eyebrow">Your selling mix</p><h2>How you match all six</h2><div class="mix">' +
+    var today = "";
+    try { today = new Date().toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" }); } catch (x) {}
+    var n = 0;
+    function num() { n++; return (n < 10 ? "0" : "") + n; }
+    var mix = r.ranked ? '<div class="mix">' +
       r.ranked.map(function (x, i) {
         return '<div class="mix-row' + (i === 0 ? " top" : "") + '"><span>' + esc(OUT[x.key].name) + '</span><div class="track"><i data-w="' + x.pct + '" style="background:' + colorVar(x.key) + '"></i></div><b>' + x.pct + '%</b></div>';
-      }).join("") + '</div></div>' : "";
+      }).join("") + '</div>' : "";
+    var report =
+      '<article class="dossier" style="--oc:' + c + '">' +
+        '<header class="d-head"><div><p class="eyebrow">Your selling personality report</p><h2>' + esc(o.name) + '</h2></div>' +
+          '<dl class="d-meta">' +
+            '<div><dt>Best place to sell</dt><dd>' + esc(o.place) + '</dd></div>' +
+            (ru ? '<div><dt>Runner-up</dt><dd>' + esc(ru.name) + '</dd></div>' : "") +
+            (today ? '<div><dt>Prepared</dt><dd>' + esc(today) + '</dd></div>' : "") +
+          '</dl></header>' +
+        dSec(num(), "Who you are", '<p>' + esc(o.profile) + '</p><p class="sub">Your strengths</p><ul class="chips">' + o.traits.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + '</ul>') +
+        dSec(num(), "Why it suits you", '<p>' + esc(o.whyItFits) + '</p>') +
+        dSec(num(), "Watch out for", '<p class="callout">' + esc(o.watchOut) + '</p>') +
+        dSec(num(), "Your first three steps", '<ol class="steps">' + o.steps.map(function (s) { return "<li><span>" + esc(s) + "</span></li>"; }).join("") + '</ol>') +
+        (mix ? dSec(num(), "How you match all six", mix) : "") +
+        (ru ? dSec(num(), "Your runner-up", '<h3>A streak of ' + esc(ru.name) + '</h3><p>You also lean towards <strong>' + esc(ru.place) + '</strong>. ' + esc(ru.tagline) + ' Many makers combine two ways of selling, and this one pairs well with your main result.</p>') : "") +
+        '<footer class="d-foot"><span>Prepared for you by ' + esc(S.creatorName || "Michelle Frost") + '</span><a href="#checklist" id="tocl">Your checklist is below &darr;</a></footer>' +
+      '</article>';
     show(
       heroCard(r.top, lead.name ? esc(lead.name) + ", you're" : "You're") +
-      '<div class="panel"><p class="eyebrow">Your selling personality</p><p>' + esc(o.profile) + '</p><ul class="chips">' + o.traits.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + '</ul></div>' +
-      '<div class="two"><div class="panel"><p class="eyebrow">Why it suits you</p><p>' + esc(o.whyItFits) + '</p></div>' +
-      '<div class="panel"><p class="eyebrow">Watch out for</p><p>' + esc(o.watchOut) + '</p></div></div>' +
-      '<div class="panel"><p class="eyebrow">Your first three steps</p><ol class="steps">' + o.steps.map(function (s) { return "<li><span>" + esc(s) + "</span></li>"; }).join("") + '</ol></div>' +
+      report +
       '<div class="panel checklist" id="checklist"><div class="cl-head"><div><p class="eyebrow">Your free checklist</p><h2>' + esc(o.checklist.title) + '</h2></div>' +
         '<button class="btn ghost small-btn" id="print">Print or save as PDF</button></div>' +
         '<ul class="cl">' + o.checklist.items.map(function (t, i) { return '<li><input type="checkbox" id="cl' + i + '"><label for="cl' + i + '">' + esc(t) + '</label></li>'; }).join("") + '</ul></div>' +
@@ -329,10 +349,10 @@ window.ArtQuiz.mount = function (host, root) {
         (o.guide.inside ? '<p class="inside-h">Inside the guide</p><ul class="inside">' + o.guide.inside.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + '</ul>' : "") +
         creator(S.guideNote) + '<p class="price">' + esc(o.guide.price) + (o.guide.pages ? ' <span>· ' + esc(o.guide.pages) + ', instant download</span>' : "") + '</p>' +
         '<a class="btn" id="guide" href="' + esc(guideUrl(phantom && S.phantomGuideUrls && S.phantomGuideUrls[r.top] || o.guide.url)) + '">Get the guide</a></div></div>' +
-      (ru ? '<div class="panel"><p class="eyebrow">Your runner-up</p><h2>A streak of ' + esc(ru.name) + '</h2><p>You also lean towards <strong>' + esc(ru.place) + '</strong>. ' + esc(ru.tagline) + ' Many makers combine two ways of selling, and this one pairs well with your main result.</p></div>' : "") +
-      mix +
       '<div class="actions">' + '<button class="btn dark" id="share">Share my result</button><button class="btn ghost" id="again">Retake the quiz</button>' + '<span class="toast" id="toast" role="status"></span></div>' +
       '<footer>' + esc(S.byline) + '</footer>', "top");
+    var tocl = $("tocl");
+    if (tocl) tocl.onclick = function (e) { e.preventDefault(); var el = $("checklist"); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); };
     requestAnimationFrame(function () { setTimeout(function () { stage.querySelectorAll(".track i").forEach(function (i) { i.style.width = i.dataset.w + "%"; }); }, 120); });
     $("again").onclick = restart;
     $("print").onclick = function () { printChecklist(o); };
