@@ -10,7 +10,7 @@
     min-height="auto"  don't stretch the quiz to fill the screen
 */
 (function () {
-  var VERSION = "12";
+  var VERSION = "13";
   var script = document.currentScript;
   var base = script ? script.src.replace(/[^\/]*(\?.*)?$/, "") : "";
 

@@ -12,6 +12,8 @@ window.ArtQuiz.mount = function (host, root) {
   if (host.getAttribute("signup")) S.signupTo = host.getAttribute("signup");
   // signup="phantom": the unlock screen shows the result's Phantom form, which brings people back here with ?unlocked=<result>.
   var phantom = S.signupTo === "phantom" && !!S.phantomForms;
+  // skip-intro: go straight to question 1 (for pages that already introduce the quiz, like the Shopify sales page).
+  var skipIntro = host.hasAttribute("skip-intro");
   var collectsEmail = S.signupTo === "shopify" || !!S.signupUrl;
   var STORE_KEY = "artQuizResult";
   var stage = root.getElementById("stage");
@@ -240,7 +242,8 @@ window.ArtQuiz.mount = function (host, root) {
     $("again").onclick = restart;
   }
 
-  function restart() { try { history.replaceState(null, "", location.pathname); } catch (x) {} breatherSeen = false; lead.name = ""; intro(); }
+  function begin() { answers = []; current = 0; question(); }
+  function restart() { try { history.replaceState(null, "", location.pathname); } catch (x) {} breatherSeen = false; lead.name = ""; if (skipIntro) begin(); else intro(); }
 
   // Signs the person up as a Shopify subscriber, using the store's own newsletter sign-up (the same as a footer sign-up form).
   // Tags: "art-quiz", the result (e.g. "quiz-market") and the runner-up (e.g. "quiz-also-online"), which the email automation uses.
@@ -358,5 +361,6 @@ window.ArtQuiz.mount = function (host, root) {
   var params = new URLSearchParams(location.search), shared = params.get("result"), back = params.get("unlocked");
   if (phantom && back && OUT[back]) unlocked(back, params.get("ru"));
   else if (shared && OUT[shared]) sharedView(shared);
+  else if (skipIntro) begin();
   else intro();
 };
