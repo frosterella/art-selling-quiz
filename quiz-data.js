@@ -54,6 +54,7 @@ window.QUIZ = {
     // Your story, shown where people decide: the email step and the guide offer.
     creatorName: "Michelle Frost",
     creatorNote: "I tried selling my art in many ways that didn't feel right. When I leaned into what suits me, I went from five figures a year to five figures a month. This is the quiz I wish I'd had.",
+    guideImageBase: "https://frosterella.github.io/art-selling-quiz/img/",
     guideNote: "This is the guide I wish I'd had when I started. Selling the way that suits you changes everything.",
     privacyNote: "You'll also get my emails about selling your art. Unsubscribe any time."
   },
@@ -91,7 +92,7 @@ window.QUIZ = {
           "Afterwards, note what sold, what people asked about, and your takings minus costs"
         ]
       },
-      guide: { title: "The Market Maker's Guide", blurb: "Booth setup, pricing that sells, what to bring and how to turn browsers into buyers.", price: "$27", url: "https://learn.michellefrost.com/market-maker-guide" }
+      guide: { title: "The Market Maker's Guide", blurb: "Booth setup, pricing that sells, what to bring and how to turn browsers into buyers.", inside: ["Choosing the right markets, and applying with confidence", "Pricing, range and how much stock to bring", "Your booth: display, signs and a packing kit", "Selling on the day, plus a 90-day market plan"], pages: "20+ printable pages", price: "$27", url: "https://learn.michellefrost.com/market-maker-guide" }
     },
     cafe: {
       name: "The Local Favourite",
@@ -124,7 +125,7 @@ window.QUIZ = {
           "Check in every few weeks and swap out pieces that aren't getting attention"
         ]
       },
-      guide: { title: "The Local Favourite's Guide", blurb: "How to find busy local venues that suit your work, what to agree in writing, and how to turn a wall into sales and email sign-ups.", price: "$27", url: "https://learn.michellefrost.com/local-favourite-guide" }
+      guide: { title: "The Local Favourite's Guide", blurb: "How to find busy local venues that suit your work, what to agree in writing, and how to turn a wall into sales and email sign-ups.", inside: ["Finding venues that suit your work, and approaching the owner", "What to agree in writing, including insurance", "Hanging the show, and turning a display into sales and followers", "A 90-day plan to get your art seen around town"], pages: "20+ printable pages", price: "$27", url: "https://learn.michellefrost.com/local-favourite-guide" }
     },
     gallery: {
       name: "The Studio Devotee",
@@ -157,7 +158,7 @@ window.QUIZ = {
           "Follow up politely, and keep making while you wait"
         ]
       },
-      guide: { title: "The Studio Devotee's Guide", blurb: "Building a body of work, your first artist CV, and approaching galleries without the cringe.", price: "$27", url: "https://learn.michellefrost.com/studio-devotee-guide" }
+      guide: { title: "The Studio Devotee's Guide", blurb: "Building a body of work, your first artist CV, and approaching galleries without the cringe.", inside: ["How galleries really work, and whether you're gallery-ready", "Finding the right galleries and approaching them the right way", "Stepping stones that build your track record first", "What to do when a gallery says yes, plus a 90-day gallery plan"], pages: "20+ printable pages", price: "$27", url: "https://learn.michellefrost.com/studio-devotee-guide" }
     },
     wholesale: {
       name: "The Production Pro",
@@ -190,7 +191,7 @@ window.QUIZ = {
           "Work out how much you can make each month before you say yes to orders"
         ]
       },
-      guide: { title: "The Production Pro's Guide", blurb: "Wholesale pricing, line sheets, approaching shops and keeping up with reorders.", price: "$27", url: "https://learn.michellefrost.com/production-pro-guide" }
+      guide: { title: "The Production Pro's Guide", blurb: "Wholesale pricing, line sheets, approaching shops and keeping up with reorders.", inside: ["Wholesale pricing that's still profitable at half of retail", "Building a wholesale-ready collection and line sheet", "Finding and approaching shops that suit you", "Orders and production timelines, plus a 90-day wholesale plan"], pages: "20+ printable pages", price: "$27", url: "https://learn.michellefrost.com/production-pro-guide" }
     },
     online: {
       name: "The Online Independent",
@@ -223,7 +224,7 @@ window.QUIZ = {
           "Check your shop stats once a month, and add new work regularly"
         ]
       },
-      guide: { title: "The Online Independent's Guide", blurb: "Choosing a platform, product photos that sell, and getting your first online buyers.", price: "$27", url: "https://learn.michellefrost.com/online-independent-guide" }
+      guide: { title: "The Online Independent's Guide", blurb: "Choosing a platform, product photos that sell, and getting your first online buyers.", inside: ["Choosing where to sell: your own site, Etsy or another marketplace", "Photos and listings that sell", "Pricing for fees and shipping, and getting found", "Orders and customer service, plus a 90-day online plan"], pages: "20+ printable pages", price: "$27", url: "https://learn.michellefrost.com/online-independent-guide" }
     },
     commission: {
       name: "The Custom Collaborator",
@@ -256,7 +257,7 @@ window.QUIZ = {
           "Photograph every finished commission, and ask happy clients for a testimonial and a referral"
         ]
       },
-      guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing and deposits, working with interior designers, and handling clients with confidence.", price: "$27", url: "https://learn.michellefrost.com/custom-collaborator-guide" }
+      guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing and deposits, working with interior designers, and handling clients with confidence.", inside: ["Your commission menu: pricing, deposits and revisions", "The commission process step by step, and what to put in writing", "Working with interior designers and art consultants", "Finding clients, plus a 90-day commissions plan"], pages: "20+ printable pages", price: "$27", url: "https://learn.michellefrost.com/custom-collaborator-guide" }
     }
   },
 

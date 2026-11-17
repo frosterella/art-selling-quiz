@@ -142,14 +142,22 @@ input:focus { outline: none; border-color: var(--mustard); }
 .mix-row b { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 .mix-row.top span { font-weight: 600; }
 @media (max-width: 520px) { .mix-row { grid-template-columns: minmax(0, 1fr) 44px; } .mix-row .track { grid-column: 1 / -1; grid-row: 2; } }
-.upsell { --oc: var(--teal); background: var(--surface); border-radius: 20px; padding: clamp(22px, 4vw, 34px); display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 22px; align-items: center; box-shadow: inset 0 0 0 3px var(--oc); }
+.upsell { --oc: var(--teal); background: var(--surface); border-radius: 20px; padding: clamp(22px, 4vw, 34px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 18px 28px; align-items: start; box-shadow: inset 0 0 0 3px var(--oc); }
+.upsell .bridge { grid-column: 1 / -1; margin: 0; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; line-height: 1.3; text-wrap: balance; }
+.upsell .bridge em { font-style: normal; color: var(--oc); }
+.upsell .cover { width: 100%; height: auto; display: block; border-radius: 10px; margin-top: 8px; }
 .upsell .book { width: 110px; aspect-ratio: 3 / 4; border-radius: 6px 12px 12px 6px; background: var(--oc); position: relative; overflow: hidden; box-shadow: 6px 6px 0 var(--line); }
 .upsell .book::before { content: ""; position: absolute; width: 90px; height: 90px; border-radius: 50%; background: var(--mustard); right: -30px; top: -26px; }
 .upsell .book::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 16px; height: 6px; border-radius: 3px; background: #FFFBF4; opacity: .8; box-shadow: 0 -12px 0 #FFFBF4; }
-.upsell .u-body { display: grid; gap: 10px; }
-.upsell .price { font-weight: 700; font-size: 22px; }
-.upsell .btn { background: var(--oc); color: #FFFBF4; }
-@media (max-width: 520px) { .upsell { grid-template-columns: 1fr; } }
+.upsell .u-body { display: grid; gap: 10px; min-width: 0; }
+.upsell .inside-h { margin: 4px 0 0; font-weight: 600; }
+.upsell .inside { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.upsell .inside li { position: relative; padding-left: 26px; line-height: 1.4; }
+.upsell .inside li::before { content: ""; position: absolute; left: 2px; top: .38em; width: 13px; height: 7px; border-left: 2.5px solid var(--oc); border-bottom: 2.5px solid var(--oc); transform: rotate(-45deg); }
+.upsell .price { font-weight: 700; font-size: 22px; line-height: 1.35; margin: 4px 0 0; }
+.upsell .price span { font-weight: 400; font-size: 16px; color: var(--muted); }
+.upsell .btn { background: var(--oc); color: #FFFBF4; justify-self: start; }
+@media (max-width: 680px) { .upsell { grid-template-columns: 1fr; } .upsell .cover { max-width: 420px; margin: 0 auto; } }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .toast { font-size: 14px; color: var(--accent); font-weight: 500; }
 .unlock { --oc: var(--teal); background: var(--surface); border-radius: 20px; padding: clamp(22px, 4vw, 34px); display: grid; gap: 16px; box-shadow: inset 0 0 0 3px var(--oc); }

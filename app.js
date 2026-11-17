@@ -320,10 +320,14 @@ window.ArtQuiz.mount = function (host, root) {
       '<div class="panel checklist" id="checklist"><div class="cl-head"><div><p class="eyebrow">Your free checklist</p><h2>' + esc(o.checklist.title) + '</h2></div>' +
         '<button class="btn ghost small-btn" id="print">Print or save as PDF</button></div>' +
         '<ul class="cl">' + o.checklist.items.map(function (t, i) { return '<li><input type="checkbox" id="cl' + i + '"><label for="cl' + i + '">' + esc(t) + '</label></li>'; }).join("") + '</ul></div>' +
+      '<div class="upsell" style="--oc:' + c + '"><p class="bridge">Your checklist tells you <em>what</em> to do. Your guide shows you <em>how</em>.</p>' +
+        (S.guideImageBase ? '<img class="cover" src="' + esc(S.guideImageBase + "guide-" + r.top + ".jpg") + '" alt="Pages from ' + esc(o.guide.title) + '" width="720" height="569" loading="lazy">' : '<div class="book" aria-hidden="true"></div>') +
+        '<div class="u-body"><p class="eyebrow">Ready for the next step?</p><h2>' + esc(o.guide.title) + '</h2><p>' + esc(o.guide.blurb) + '</p>' +
+        (o.guide.inside ? '<p class="inside-h">Inside the guide</p><ul class="inside">' + o.guide.inside.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + '</ul>' : "") +
+        creator(S.guideNote) + '<p class="price">' + esc(o.guide.price) + (o.guide.pages ? ' <span>· ' + esc(o.guide.pages) + ', instant download</span>' : "") + '</p>' +
+        '<a class="btn" id="guide" href="' + esc(guideUrl(phantom && S.phantomGuideUrls && S.phantomGuideUrls[r.top] || o.guide.url)) + '">Get the guide</a></div></div>' +
       (ru ? '<div class="panel"><p class="eyebrow">Your runner-up</p><h2>A streak of ' + esc(ru.name) + '</h2><p>You also lean towards <strong>' + esc(ru.place) + '</strong>. ' + esc(ru.tagline) + ' Many makers combine two ways of selling, and this one pairs well with your main result.</p></div>' : "") +
       mix +
-      '<div class="upsell" style="--oc:' + c + '"><div class="book" aria-hidden="true"></div><div class="u-body"><p class="eyebrow">Ready for the next step?</p><h2>' + esc(o.guide.title) + '</h2><p>' + esc(o.guide.blurb) + '</p>' + creator(S.guideNote) + '<p class="price">' + esc(o.guide.price) + '</p>' +
-        '<a class="btn" id="guide" href="' + esc(guideUrl(phantom && S.phantomGuideUrls && S.phantomGuideUrls[r.top] || o.guide.url)) + '">Get the guide</a></div></div>' +
       '<div class="actions">' + '<button class="btn dark" id="share">Share my result</button><button class="btn ghost" id="again">Retake the quiz</button>' + '<span class="toast" id="toast" role="status"></span></div>' +
       '<footer>' + esc(S.byline) + '</footer>', "top");
     requestAnimationFrame(function () { setTimeout(function () { stage.querySelectorAll(".track i").forEach(function (i) { i.style.width = i.dataset.w + "%"; }); }, 120); });
