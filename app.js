@@ -211,7 +211,7 @@ window.ArtQuiz.mount = function (host, root) {
       '<div class="actions"><button class="linkish" id="again">Retake the quiz</button></div>', "top");
     $("again").onclick = restart;
   }
-  // Phantom forms report their height; grow the frame to fit so it never scrolls inside itself.
+  // If a Phantom form ever reports its height, grow the frame to fit (the fixed height in quiz.css covers it otherwise).
   window.addEventListener("message", function (e) {
     var f = $("pform"), d = e.data;
     if (!f || e.source !== f.contentWindow || !Array.isArray(d) || d[0] !== "highlevel.setHeight" || !d[1]) return;
