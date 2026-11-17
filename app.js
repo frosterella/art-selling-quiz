@@ -355,7 +355,7 @@ window.ArtQuiz.mount = function (host, root) {
     $("guide").onclick = function () { track("InitiateCheckout", { content_name: o.guide.title, value: parseFloat(String(o.guide.price).replace(/[^0-9.]/g, "")) || 0, currency: S.currency || "CAD" }); };
     var share = $("share");
     if (share) share.onclick = function () {
-      var url = location.origin + location.pathname + "?result=" + r.top, text = "I'm " + o.name + "! Find out where you should sell your art:";
+      var url = location.origin + location.pathname + "?result=" + r.top + (document.getElementById("take-the-quiz") ? "#take-the-quiz" : ""), text = "I'm " + o.name + "! Find out where you should sell your art:";
       if (navigator.share) navigator.share({ title: S.title, text: text, url: url }).catch(function () {});
       else if (navigator.clipboard) navigator.clipboard.writeText(text + " " + url).then(function () { $("toast").textContent = "Link copied!"; });
     };
