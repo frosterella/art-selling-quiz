@@ -91,7 +91,7 @@ window.QUIZ = {
           "Afterwards, note what sold, what people asked about, and your takings minus costs"
         ]
       },
-      guide: { title: "The Market Maker's Guide", blurb: "Booth setup, pricing that sells, what to bring and how to turn browsers into buyers.", price: "$27", url: "https://michellefrost.com/products/market-maker-guide" }
+      guide: { title: "The Market Maker's Guide", blurb: "Booth setup, pricing that sells, what to bring and how to turn browsers into buyers.", price: "$27", url: "https://learn.michellefrost.com/market-maker-guide" }
     },
     cafe: {
       name: "The Local Favourite",
@@ -124,7 +124,7 @@ window.QUIZ = {
           "Check in every few weeks and swap out pieces that aren't getting attention"
         ]
       },
-      guide: { title: "The Local Favourite's Guide", blurb: "How to find busy local venues that suit your work, what to agree in writing, and how to turn a wall into sales and email sign-ups.", price: "$27", url: "https://michellefrost.com/products/local-favourite-guide" }
+      guide: { title: "The Local Favourite's Guide", blurb: "How to find busy local venues that suit your work, what to agree in writing, and how to turn a wall into sales and email sign-ups.", price: "$27", url: "https://learn.michellefrost.com/local-favourite-guide" }
     },
     gallery: {
       name: "The Studio Devotee",
@@ -157,7 +157,7 @@ window.QUIZ = {
           "Follow up politely, and keep making while you wait"
         ]
       },
-      guide: { title: "The Studio Devotee's Guide", blurb: "Building a body of work, your first artist CV, and approaching galleries without the cringe.", price: "$27", url: "https://michellefrost.com/products/studio-devotee-guide" }
+      guide: { title: "The Studio Devotee's Guide", blurb: "Building a body of work, your first artist CV, and approaching galleries without the cringe.", price: "$27", url: "https://learn.michellefrost.com/studio-devotee-guide" }
     },
     wholesale: {
       name: "The Production Pro",
@@ -190,7 +190,7 @@ window.QUIZ = {
           "Work out how much you can make each month before you say yes to orders"
         ]
       },
-      guide: { title: "The Production Pro's Guide", blurb: "Wholesale pricing, line sheets, approaching shops and keeping up with reorders.", price: "$27", url: "https://michellefrost.com/products/production-pro-guide" }
+      guide: { title: "The Production Pro's Guide", blurb: "Wholesale pricing, line sheets, approaching shops and keeping up with reorders.", price: "$27", url: "https://learn.michellefrost.com/production-pro-guide" }
     },
     online: {
       name: "The Online Independent",
@@ -223,7 +223,7 @@ window.QUIZ = {
           "Check your shop stats once a month, and add new work regularly"
         ]
       },
-      guide: { title: "The Online Independent's Guide", blurb: "Choosing a platform, product photos that sell, and getting your first online buyers.", price: "$27", url: "https://michellefrost.com/products/online-independent-guide" }
+      guide: { title: "The Online Independent's Guide", blurb: "Choosing a platform, product photos that sell, and getting your first online buyers.", price: "$27", url: "https://learn.michellefrost.com/online-independent-guide" }
     },
     commission: {
       name: "The Custom Collaborator",
@@ -256,7 +256,7 @@ window.QUIZ = {
           "Photograph every finished commission, and ask happy clients for a testimonial and a referral"
         ]
       },
-      guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing and deposits, working with interior designers, and handling clients with confidence.", price: "$27", url: "https://michellefrost.com/products/custom-collaborator-guide" }
+      guide: { title: "The Custom Collaborator's Guide", blurb: "Commission menus, pricing and deposits, working with interior designers, and handling clients with confidence.", price: "$27", url: "https://learn.michellefrost.com/custom-collaborator-guide" }
     }
   },
 
