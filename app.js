@@ -10,7 +10,10 @@ window.ArtQuiz.mount = function (host, root) {
   if (host.getAttribute("signup-url")) S.signupUrl = host.getAttribute("signup-url");
   // signup="shopify": sign people up as Shopify email subscribers. Only works when the quiz sits on a page of the Shopify store itself.
   if (host.getAttribute("signup")) S.signupTo = host.getAttribute("signup");
+  // signup="phantom": the unlock screen shows the result's Phantom form, which brings people back here with ?unlocked=<result>.
+  var phantom = S.signupTo === "phantom" && !!S.phantomForms;
   var collectsEmail = S.signupTo === "shopify" || !!S.signupUrl;
+  var STORE_KEY = "artQuizResult";
   var stage = root.getElementById("stage");
   var answers = [], current = 0, result = null, lead = { name: "", email: "" };
   function $(id) { return root.getElementById(id); }
@@ -135,6 +138,7 @@ window.ArtQuiz.mount = function (host, root) {
 
   // Step 1: reveal the result's name, then offer the full breakdown and checklist in exchange for an email.
   function reveal() {
+    if (phantom && S.phantomForms[result.top]) return phantomReveal();
     var o = OUT[result.top], ask = collectsEmail;
     show(heroCard(result.top, "You're") +
       '<div class="unlock" style="--oc:' + colorVar(result.top) + '">' +
@@ -168,6 +172,64 @@ window.ArtQuiz.mount = function (host, root) {
       var btn = e.target.querySelector("button[type=submit]"); btn.disabled = true; btn.textContent = "One moment…";
       send(name, email).then(function () { showResult(result); });
     };
+  }
+
+  // Remembers the result in this browser tab, so the full breakdown (runner-up and match bars included) can open
+  // when the Phantom form sends the person back to this page.
+  function remember(r) {
+    try { sessionStorage.setItem(STORE_KEY, JSON.stringify({ top: r.top, runnerUp: r.runnerUp, ranked: r.ranked, at: Date.now() })); } catch (x) {}
+  }
+  function recall(key) {
+    try {
+      var r = JSON.parse(sessionStorage.getItem(STORE_KEY) || "null");
+      if (r && r.top === key && OUT[r.top] && Date.now() - r.at < 864e5) return r;
+    } catch (x) {}
+    return null;
+  }
+
+  // Step 1 with signup="phantom": the result's own Phantom form takes the name and email. On submit, Phantom moves the
+  // whole page to the form's redirect address (this page with ?unlocked=<result>), adding the ?ru=<runner-up> given below.
+  function phantomReveal() {
+    var o = OUT[result.top];
+    remember(result);
+    var src = S.phantomFormHost.replace(/\/$/, "") + "/widget/form/" + S.phantomForms[result.top] + (result.runnerUp ? "?ru=" + encodeURIComponent(result.runnerUp) : "");
+    show(heroCard(result.top, "You're") +
+      '<div class="unlock" style="--oc:' + colorVar(result.top) + '">' +
+        '<p class="eyebrow">Your full breakdown is ready</p>' +
+        '<h2>Get your full breakdown, plus a free checklist made for you</h2>' +
+        '<ul class="gets">' +
+          '<li>Your selling personality profile and strengths</li>' +
+          '<li>Why this way of selling suits you, and what to watch out for</li>' +
+          '<li>Your first three steps</li>' +
+          '<li>Your runner-up, and how you match all six</li>' +
+          '<li class="bonus"><span><strong>Free printable:</strong> ' + esc(o.checklist.title) + '</span></li>' +
+        '</ul>' +
+        creator(S.creatorNote) +
+        '<div class="pform"><iframe id="pform" src="' + esc(src) + '" title="Get your full breakdown" loading="eager"></iframe></div>' +
+        '<p class="small">' + esc(S.unlockNote) + ' ' + esc(S.privacyNote) + '</p>' +
+      '</div>' +
+      '<div class="actions"><button class="linkish" id="again">Retake the quiz</button></div>', "top");
+    $("again").onclick = restart;
+  }
+  // Phantom forms report their height; grow the frame to fit so it never scrolls inside itself.
+  window.addEventListener("message", function (e) {
+    var f = $("pform"), d = e.data;
+    if (!f || e.source !== f.contentWindow || !Array.isArray(d) || d[0] !== "highlevel.setHeight" || !d[1]) return;
+    var h = parseInt(d[1].height, 10);
+    if (h > 0) f.style.height = (h + 8) + "px";
+  });
+
+  // Back from the Phantom form: open the full breakdown and tidy the address bar.
+  function unlocked(key, ru) {
+    var r = recall(key) || { top: key, runnerUp: OUT[ru] && ru !== key ? ru : null, ranked: null };
+    result = r;
+    track("Lead", { content_name: OUT[key].name });
+    try {
+      var u = new URL(location.href);
+      ["unlocked", "ru"].forEach(function (p) { u.searchParams.delete(p); });
+      history.replaceState(null, "", u.pathname + u.search + u.hash);
+    } catch (x) {}
+    showResult(r);
   }
 
   // A shared link shows only the result's name, with an invitation to take the quiz.
@@ -261,7 +323,7 @@ window.ArtQuiz.mount = function (host, root) {
       (ru ? '<div class="panel"><p class="eyebrow">Your runner-up</p><h2>A streak of ' + esc(ru.name) + '</h2><p>You also lean towards <strong>' + esc(ru.place) + '</strong>. ' + esc(ru.tagline) + ' Many makers combine two ways of selling, and this one pairs well with your main result.</p></div>' : "") +
       mix +
       '<div class="upsell" style="--oc:' + c + '"><div class="book" aria-hidden="true"></div><div class="u-body"><p class="eyebrow">Ready for the next step?</p><h2>' + esc(o.guide.title) + '</h2><p>' + esc(o.guide.blurb) + '</p>' + creator(S.guideNote) + '<p class="price">' + esc(o.guide.price) + '</p>' +
-        '<a class="btn" id="guide" href="' + esc(guideUrl(o.guide.url)) + '">Get the guide</a></div></div>' +
+        '<a class="btn" id="guide" href="' + esc(guideUrl(phantom && S.phantomGuideUrls && S.phantomGuideUrls[r.top] || o.guide.url)) + '">Get the guide</a></div></div>' +
       '<div class="actions">' + '<button class="btn dark" id="share">Share my result</button><button class="btn ghost" id="again">Retake the quiz</button>' + '<span class="toast" id="toast" role="status"></span></div>' +
       '<footer>' + esc(S.byline) + '</footer>', "top");
     requestAnimationFrame(function () { setTimeout(function () { stage.querySelectorAll(".track i").forEach(function (i) { i.style.width = i.dataset.w + "%"; }); }, 120); });
@@ -289,7 +351,8 @@ window.ArtQuiz.mount = function (host, root) {
   });
 
   /* ---------- start: a shared result link opens that result, otherwise the welcome screen ---------- */
-  var params = new URLSearchParams(location.search), shared = params.get("result");
-  if (shared && OUT[shared]) sharedView(shared);
+  var params = new URLSearchParams(location.search), shared = params.get("result"), back = params.get("unlocked");
+  if (phantom && back && OUT[back]) unlocked(back, params.get("ru"));
+  else if (shared && OUT[shared]) sharedView(shared);
   else intro();
 };

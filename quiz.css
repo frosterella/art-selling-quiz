@@ -167,6 +167,9 @@ input:focus { outline: none; border-color: var(--mustard); }
 .unlock .btn { background: var(--oc); color: #FFFBF4; }
 .unlock .err { color: var(--orange); }
 .unlock .small { color: var(--muted); opacity: 1; }
+/* The Phantom sign-up form (signup="phantom"). It sets its own height via a message; 420px covers it until then. */
+.unlock .pform { background: #FFFFFF; border-radius: 14px; overflow: hidden; }
+.unlock .pform iframe { display: block; width: 100%; height: 420px; border: 0; }
 .panel.center { text-align: center; justify-items: center; }
 .cl-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; flex-wrap: wrap; }
 .small-btn { padding: 9px 16px; font-size: 14px; }

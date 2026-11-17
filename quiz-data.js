@@ -27,6 +27,26 @@ window.QUIZ = {
     fieldResult: "quiz_result",
     // Adds the person's email and first name to each guide's checkout link, so the order form is pre-filled.
     prefillCheckout: false,
+    // signup="phantom": shows the result's Phantom sign-up form on the unlock screen (set on the snippet: <art-selling-quiz signup="phantom">).
+    // Each form's "Redirect to URL" setting in Phantom sends people back to this page with ?unlocked=<result>#take-the-quiz,
+    // and the quiz then opens their full breakdown. The guide buttons go to the Phantom order pages below.
+    phantomFormHost: "https://api.otherlife.com",
+    phantomForms: {
+      market: "wrof8Mdjob0j0lOLyGBl",
+      cafe: "kERSsi42PsZdhnZ87Ygq",
+      gallery: "stGK89f3xgNzEASinxMZ",
+      wholesale: "Kn2a8S6iIbDZztA4gpV0",
+      online: "fGX2Sa7700jVQYzUqr6q",
+      commission: "po1WYlmh6RnPttKdxfto"
+    },
+    phantomGuideUrls: {
+      market: "https://learn.michellefrost.com/market-maker-guide",
+      cafe: "https://learn.michellefrost.com/local-favourite-guide",
+      gallery: "https://learn.michellefrost.com/studio-devotee-guide",
+      wholesale: "https://learn.michellefrost.com/production-pro-guide",
+      online: "https://learn.michellefrost.com/online-independent-guide",
+      commission: "https://learn.michellefrost.com/custom-collaborator-guide"
+    },
     // Currency reported to the Meta pixel when someone clicks through to buy a guide.
     currency: "CAD",
     // Shown on the unlock screen. Only promise an emailed copy once your email tool sends one.

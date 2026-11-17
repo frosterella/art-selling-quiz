@@ -39,6 +39,19 @@ The full breakdown shows a personality profile, why that way of selling suits th
 
 Sign-ups become Shopify email subscribers, tagged `art-quiz`, `quiz-<result>` (e.g. `quiz-market`) and `quiz-also-<runner-up>`. A Shopify marketing automation triggered by those tags sends each result's emails.
 
+## Sending sign-ups to Phantom from the Shopify page
+
+Use `signup="phantom"` instead of `signup="shopify"`:
+
+```html
+<art-selling-quiz signup="phantom" min-height="auto"></art-selling-quiz>
+```
+
+- The unlock screen shows the result's own Phantom form (IDs in `phantomForms` in `quiz-data.js`). Phantom's bot check means the quiz can't send sign-ups in the background, so the real form is shown.
+- Each form's **Settings → On Submit → Redirect to URL** in Phantom is `https://michellefrost.com/pages/where-should-you-sell-your-art?unlocked=<result>#take-the-quiz`. Phantom moves the whole page there and adds `?ru=<runner-up>`; the quiz then opens the full breakdown (the result is also remembered in the browser tab, so the match bars come back too) and fires the Meta `Lead` event.
+- In this mode the "Get the guide" buttons go to the Phantom order pages in `phantomGuideUrls`.
+- Phantom tags the contact (`art-quiz`, `quiz-<result>`) through the "Art quiz: sign-up form" workflow, which starts that result's emails.
+
 ## Putting the quiz on a Phantom (GoHighLevel) funnel page
 
 1. **Point a subdomain at GitHub Pages** (e.g. `quiz.michellefrost.com`): add a CNAME record for `quiz` pointing to `frosterella.github.io` where your DNS is managed, then add the domain under this repository's Settings → Pages → Custom domain and tick "Enforce HTTPS". This hosts the quiz files.
