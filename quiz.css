@@ -225,3 +225,4 @@ footer { text-align: center; color: var(--muted); font-size: 13px; padding-top: 
 @media (max-width: 640px) { .d-sec { grid-template-columns: 1fr; } .d-side { display: flex; gap: 12px; align-items: baseline; } .d-num { font-size: 26px; } }
 .hero.report .byline { font-size: 15px; letter-spacing: .14em; }
 .hero.report .you-are { font-size: 18px; opacity: .9; margin-bottom: -6px; }
+.hero.report .tagline { max-width: none; }
