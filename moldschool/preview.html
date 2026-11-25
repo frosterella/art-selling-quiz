@@ -1,140 +1,192 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mold School preview</title></head><body>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Jost:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-body{background:#FFFBF4!important;margin:0}
-.ms{--cream:#FFFBF4;--sand:#F4EDE1;--ink:#2A2320;--soft:rgba(42,35,32,.74);--mustard:#E2A72E;--bark:#4A3227;--line:#E8DDCB;font-family:'Jost',sans-serif;color:var(--soft);font-size:18px;line-height:1.65;letter-spacing:.3px;background:var(--cream);-webkit-font-smoothing:antialiased}
-.ms *{box-sizing:border-box}
+body{background:#F4EDE1!important;margin:0;overflow-x:hidden}
+.ms{--bg:#F4EDE1;--surface:#FFFBF4;--ink:#2A2320;--muted:#6B5F57;--line:#E4D8C6;--teal:#1F6F6B;--mustard:#E2A72E;--orange:#C4572C;--olive:#74863A;--plum:#7B4B6E;--rose:#B8575F;--mast:#4A3227;--mast-ink:#FBF2E2;--mast-muted:#D9C7B0;--font:"Jost","Futura","Century Gothic","Avenir Next",system-ui,sans-serif;--radius:14px;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:19px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.ms *,.ms *::before,.ms *::after{box-sizing:border-box}
+.ms h1,.ms h2,.ms h3{font-family:var(--font);margin:0;text-wrap:balance;line-height:1.1;color:inherit;letter-spacing:-.01em}
+.ms h1{font-size:clamp(40px,6vw,64px);font-weight:600}
+.ms h2{font-size:clamp(28px,3.3vw,40px);font-weight:600}
+.ms h1 em,.ms h2 em{font-style:normal;color:var(--orange)}
+.ms h3{font-size:21px;font-weight:600}
+.ms p{margin:0}
+.ms ul,.ms ol{margin:0;padding:0;list-style:none}
 .ms a{color:inherit}
 .ms img{display:block;max-width:100%}
-.ms-wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-.ms-top{background:var(--bark);color:#F4EDE1;text-align:center;font-size:14px;letter-spacing:1px;padding:10px 16px}
-.ms-top a{color:#F4EDE1;text-decoration:none;border-bottom:1px solid rgba(244,237,225,.5)}
-.ms-brand{display:flex;flex-direction:column;align-items:center;padding:28px 0 8px;text-decoration:none}
-.ms-brand .n{font-family:'Dancing Script',cursive;font-size:38px;color:var(--ink);line-height:1}
-.ms-brand .s{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--ink);margin-top:4px}
-.ms-eyebrow{font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--mustard);margin:0 0 10px}
-.ms .ms-script{font-family:'Dancing Script',cursive;font-weight:600;color:var(--ink);line-height:1.05;margin:0;letter-spacing:0}
-.ms h2{font-family:'Jost',sans-serif;font-weight:500;color:var(--ink);font-size:34px;line-height:1.2;margin:0 0 14px;letter-spacing:.2px}
-.ms p{margin:0 0 16px}
-.ms-hero{padding:40px 0 64px}
-.ms-hero .ms-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
-.ms .ms-hero h1{font-size:76px;margin-bottom:18px}
-.ms-lead{font-size:20px}
-.ms-ticks{list-style:none;padding:0;margin:22px 0 0}
-.ms-ticks li{position:relative;padding-left:34px;margin:0 0 10px;color:var(--ink)}
-.ms-ticks li:before{content:"";position:absolute;left:0;top:6px;width:20px;height:20px;border-radius:50%;background:var(--mustard)}
-.ms-ticks li:after{content:"";position:absolute;left:7px;top:10px;width:5px;height:9px;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(45deg)}
-.ms-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:34px 30px 22px;box-shadow:0 18px 50px -24px rgba(74,50,39,.35)}
-.ms-card h3{font-family:'Jost',sans-serif;font-weight:500;color:var(--ink);font-size:24px;margin:0 0 6px;text-align:center}
-.ms-card .sub{text-align:center;font-size:16px;margin:0 0 8px}
+.ms-band{padding:clamp(56px,8vw,96px) 16px}
+.ms-inner{max-width:1080px;margin:0 auto;display:grid;gap:32px}
+.ms-narrow{max-width:760px}
+.ms-head{display:grid;gap:14px;justify-items:center;text-align:center}
+.ms-eyebrow{display:inline-block;font-size:14px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:7px 18px;border-radius:999px;background:rgba(226,167,46,.18);color:var(--orange)}
+.ms-head h2::after{content:"";display:block;width:132px;height:6px;margin:18px auto 0;border-radius:3px;background:linear-gradient(90deg,var(--teal) 0 38%,transparent 38% 44%,var(--mustard) 44% 68%,transparent 68% 74%,var(--orange) 74% 86%,transparent 86% 92%,var(--olive) 92% 100%)}
+.ms-lede{font-size:clamp(20px,2.1vw,23px);max-width:58ch}
+.ms-head .ms-lede{margin-inline:auto;color:var(--muted)}
+.ms-btn{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-weight:600;font-size:20px;text-decoration:none!important;padding:15px 30px;border-radius:999px;background:var(--mustard);color:#2A2320!important;box-shadow:0 3px 0 #B9841B;transition:transform .15s ease,box-shadow .15s ease}
+.ms-btn:hover{transform:translateY(-1px);box-shadow:0 4px 0 #B9841B}
+.ms-btn:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.ms-center{display:flex;justify-content:center}
+/* logo bar */
+.ms-bar{position:relative;display:flex;justify-content:center;padding:18px 16px 14px;background:var(--surface);border-bottom:1px solid var(--line)}
+.ms-bar img{width:96px;height:auto}
+.ms-login{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:500;color:var(--muted)!important;text-decoration:underline;text-underline-offset:3px}
+/* masthead */
+.ms-mast{position:relative;overflow:hidden;isolation:isolate;background:var(--mast);color:var(--mast-ink);padding:clamp(44px,7vw,88px) 16px clamp(52px,8vw,100px)}
+.ms-mast-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,56px);align-items:center}
+.ms-mast-copy{display:grid;gap:20px;min-width:0}
+.ms-byline{color:var(--mustard);font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:14.5px}
+.ms-mast h1{color:var(--mast-ink)}
+.ms-mast h1 em{color:var(--mustard)}
+.ms-mast .ms-lede{color:var(--mast-muted)}
+.ms-ticks{display:grid;gap:10px}
+.ms-ticks li{position:relative;padding-left:34px;font-size:18px;color:var(--mast-ink)}
+.ms-ticks li::before{content:"";position:absolute;left:0;top:5px;width:20px;height:20px;border-radius:50%;background:var(--mustard)}
+.ms-ticks li::after{content:"";position:absolute;left:7px;top:9px;width:5px;height:9px;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.ms-shape{position:absolute;border-radius:50%;z-index:-1;pointer-events:none}
+.ms-s-sun{width:360px;height:360px;background:var(--orange);right:-140px;top:-170px;opacity:.9}
+.ms-s-arc{width:300px;height:300px;border:34px solid var(--teal);left:-170px;bottom:-190px}
+.ms-s-dot{width:22px;height:22px;background:var(--mustard);left:6%;top:70px}
+.ms-s-ring{width:64px;height:64px;border:6px solid var(--olive);right:6%;bottom:36px}
+.ms-card{background:var(--surface);color:var(--ink);border-radius:22px;padding:clamp(22px,3.5vw,32px) clamp(18px,3vw,28px) 18px;display:grid;gap:8px;box-shadow:0 18px 40px rgba(20,10,5,.35);min-width:0;scroll-margin-top:24px}
+.ms-card h2{font-size:26px;text-align:center}
+.ms-card .sub{font-size:16.5px;color:var(--muted);text-align:center}
 .ms-card iframe{width:100%;border:0;height:262px;display:block}
-.ms-card .fine{text-align:center;font-size:13px;margin:4px 0 0}
-.ms-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:0 14px}
-.ms-strip img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px}
-.ms-note{padding:84px 0}
-.ms-note .ms-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
-.ms-note .ph{border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:4/5}
-.ms-note .ph img{width:100%;height:100%;object-fit:cover}
-.ms .ms-note .ms-script{font-size:58px;margin-bottom:18px}
-.ms-sig{font-family:'Dancing Script',cursive;font-size:34px;color:var(--ink);margin-top:6px}
-.ms-inside{background:var(--sand);padding:84px 0}
-.ms-center{text-align:center;max-width:720px;margin:0 auto 44px}
-.ms-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.ms-mod{background:var(--cream);border:1px solid var(--line);border-radius:22px;padding:24px 22px}
-.ms-mod .num{font-family:'Dancing Script',cursive;font-size:34px;color:var(--mustard);line-height:1}
-.ms-mod h4{font-family:'Jost',sans-serif;font-weight:500;color:var(--ink);font-size:19px;margin:8px 0 6px}
-.ms-mod p{font-size:15.5px;line-height:1.55;margin:0}
-.ms-mod.hl{background:#fff;border:1.5px solid var(--mustard)}
-.ms .ms-molds{text-align:center;font-size:16px;margin:34px auto 0;max-width:760px}
-.ms-faq{padding:84px 0}
-.ms-faq .ms-wrap{max-width:820px}
-.ms-faq details{border-bottom:1px solid var(--line);padding:18px 4px}
-.ms-faq summary{cursor:pointer;list-style:none;color:var(--ink);font-size:19px;font-weight:500;display:flex;justify-content:space-between;gap:16px}
+.ms-card .fine{font-size:14px;color:var(--muted);text-align:center}
+/* photos */
+.ms-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;max-width:1080px;margin:0 auto}
+.ms-strip img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--radius)}
+.ms-photos{padding:clamp(28px,4vw,44px) 16px 0}
+/* about */
+.ms-sun{background:#FBEDCF}
+.ms-sun .ms-eyebrow{background:rgba(196,87,44,.12)}
+.ms-about{display:grid;grid-template-columns:300px minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:center}
+.ms-portrait{aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden}
+.ms-portrait img{width:100%;height:100%;object-fit:cover}
+.ms-about-copy{display:grid;gap:16px;min-width:0}
+.ms-about-copy .ms-eyebrow{justify-self:start}
+/* modules */
+.ms-teal{background:#E1EEEA}
+.ms-mods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.ms-mod{background:var(--surface);border-radius:var(--radius);border-top:6px solid var(--c);padding:22px;display:grid;gap:8px;align-content:start}
+.ms-badge{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:19px;color:#FFFBF4;background:var(--c)}
+.ms-mod p{font-size:16.5px;color:var(--muted);line-height:1.5}
+.ms-mod.hl{box-shadow:inset 0 0 0 2px var(--c)}
+.ms-molds{text-align:center;font-size:17px;color:var(--muted);max-width:62ch;margin:0 auto}
+/* faq */
+.ms-paper{background:var(--surface);border-block:1px solid var(--line)}
+.ms-faq{display:grid;border-top:1px solid var(--line)}
+.ms-faq details{border-bottom:1px solid var(--line)}
+.ms-faq summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-weight:600;font-size:21px;position:relative;line-height:1.3}
 .ms-faq summary::-webkit-details-marker{display:none}
-.ms-faq summary:after{content:"+";color:var(--mustard);font-size:26px;line-height:1}
-.ms-faq details[open] summary:after{content:"–"}
-.ms-faq details p{margin:12px 0 0;font-size:17px}
-.ms-end{background:var(--bark);color:#F4EDE1;text-align:center;padding:76px 0}
-.ms .ms-end .ms-script{color:#FFFBF4;font-size:58px;margin-bottom:14px}
-.ms-end p{color:rgba(244,237,225,.85);max-width:560px;margin:0 auto 28px}
-.ms-btn{display:inline-block;background:var(--mustard);color:var(--ink)!important;text-decoration:none;font-weight:600;letter-spacing:1px;padding:16px 34px;border-radius:40px;font-size:16px}
-.ms-btn:hover{filter:brightness(1.05)}
-.ms-foot{background:#3B281F;color:rgba(244,237,225,.75);text-align:center;font-size:14px;padding:26px 16px;letter-spacing:.5px}
-.ms-foot a{color:#F4EDE1;text-decoration:none}
-@media(max-width:900px){
-.ms-hero .ms-wrap,.ms-note .ms-wrap{grid-template-columns:1fr;gap:36px}
-.ms-hero{padding:22px 0 48px;text-align:center}
-.ms .ms-hero h1{font-size:56px}
-.ms-ticks{display:inline-block;text-align:left}
-.ms-grid{grid-template-columns:1fr 1fr}
-.ms-strip{grid-template-columns:1fr 1fr}
-.ms-note{padding:60px 0}.ms-note .ph{max-width:360px;margin:0 auto}
-.ms .ms-note .ms-script,.ms .ms-end .ms-script{font-size:46px}
-.ms h2{font-size:28px}
-}
-@media(max-width:520px){.ms{font-size:17px}.ms-grid{grid-template-columns:1fr}.ms-card{padding:28px 18px 18px}.ms .ms-hero h1{font-size:48px}}
+.ms-faq summary::after{content:"+";position:absolute;right:6px;top:14px;font-size:28px;font-weight:400;color:var(--orange);transition:transform .2s ease}
+.ms-faq details[open] summary::after{transform:rotate(45deg)}
+.ms-faq summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.ms-a{padding:0 0 22px;color:var(--muted);max-width:64ch;font-size:18px}
+.ms-a a{color:var(--teal)}
+/* closing */
+.ms-dark{position:relative;overflow:hidden;isolation:isolate;background:var(--mast);color:var(--mast-ink);text-align:center}
+.ms-dark::before{content:"";position:absolute;z-index:-1;width:380px;height:380px;border-radius:50%;background:var(--orange);opacity:.9;right:-150px;top:-170px}
+.ms-dark::after{content:"";position:absolute;z-index:-1;width:260px;height:260px;border-radius:50%;border:30px solid var(--teal);left:-140px;bottom:-150px}
+.ms-dark .ms-inner{justify-items:center;gap:22px}
+.ms .ms-script{font-family:'Dancing Script',cursive;font-weight:600;font-size:clamp(44px,6vw,64px);line-height:1.1;letter-spacing:0;color:var(--mast-ink)}
+.ms-dark .ms-lede{color:var(--mast-muted)}
+.ms-foot{padding:26px 16px 32px;text-align:center;font-size:15px;color:var(--muted);background:var(--bg)}
+.ms-foot a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.ms-foot span{margin:0 8px}
+@media (max-width:900px){.ms-mast-grid,.ms-about{grid-template-columns:1fr}.ms-mast-copy{justify-items:center;text-align:center}.ms-ticks{text-align:left}.ms-mods{grid-template-columns:1fr 1fr}.ms-portrait{max-width:300px}.ms-strip{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.ms{font-size:17.5px}.ms-mods{grid-template-columns:1fr}.ms-s-dot{display:none}.ms-bar{flex-direction:column;align-items:center;gap:8px}.ms-login{position:static;transform:none}}
+@media (prefers-reduced-motion:reduce){.ms-btn,.ms-faq summary::after{transition:none}}
 </style>
 <div class="ms">
-<div class="ms-top">Already signed up? <a href="https://community.michellefrost.com/">Log in to Mold School →</a></div>
-<a class="ms-brand" href="https://michellefrost.com/"><span class="n">Michelle Frost</span><span class="s">Handmade Glass</span></a>
-<section class="ms-hero"><div class="ms-wrap">
-<div>
-<p class="ms-eyebrow">Free for everyone who makes with my molds</p>
-<h1 class="ms-script">Welcome to Mold School</h1>
-<p class="ms-lead">Short, friendly video lessons that take you from the moment you open the box to the day your glass is hanging in the window. Prepping, loading, firing, finishing, and what to do when things go sideways, all in one cozy place.</p>
+<div class="ms-bar"><a href="https://michellefrost.com/"><img src="https://michellefrost.com/cdn/shop/files/MFHG-Social_logo_400x400_4c855e0b-282c-454e-b1ea-50cc25c28ff7.png?v=1774935704&amp;width=240" alt="Michelle Frost Handmade Glass" width="96" height="96"></a><a class="ms-login" href="https://community.michellefrost.com/">Already signed up? Log in</a></div>
+
+<header class="ms-mast">
+<span class="ms-shape ms-s-sun" aria-hidden="true"></span><span class="ms-shape ms-s-arc" aria-hidden="true"></span><span class="ms-shape ms-s-dot" aria-hidden="true"></span><span class="ms-shape ms-s-ring" aria-hidden="true"></span>
+<div class="ms-inner"><div class="ms-mast-grid">
+<div class="ms-mast-copy">
+<p class="ms-byline">Free video lessons by Michelle Frost</p>
+<h1>Welcome to <em>Mold School</em></h1>
+<p class="ms-lede">Short, friendly video lessons that take you from the moment you open the box to the day your glass is hanging in the window. Prepping, loading, firing, finishing, and what to do when things go sideways, all in one place.</p>
 <ul class="ms-ticks"><li>Short videos you can watch at your own pace</li><li>A printable instruction sheet for every mold</li><li>Free, always. Just sign up and come on in</li></ul>
 </div>
 <div class="ms-card" id="join">
-<h3>Get your free login</h3>
+<h2>Get your free login</h2>
 <p class="sub">Pop in your name and email and I'll send your login straight to your inbox.</p>
 <iframe src="https://api.otherlife.com/widget/form/GHOHDqdOAUnyw2eawket" id="inline-GHOHDqdOAUnyw2eawket" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Mold School sign-up" data-height="262" data-layout-iframe-id="inline-GHOHDqdOAUnyw2eawket" data-form-id="GHOHDqdOAUnyw2eawket" title="Mold School sign-up"></iframe>
 <p class="fine">No credit card, nothing to buy. Unsubscribe any time.</p>
 </div>
-</div></section>
-<div class="ms-strip">
+</div></div>
+</header>
+
+<div class="ms-photos"><div class="ms-strip">
 <img src="https://michellefrost.com/cdn/shop/files/IMG-2120.heic?width=700" alt="White wreath casting mold with two finished fused glass wreaths" loading="lazy">
 <img src="https://michellefrost.com/cdn/shop/files/IMG-4091.heic?width=700" alt="Cobalt blue fused glass snowflake hanging in a window" loading="lazy">
 <img src="https://michellefrost.com/cdn/shop/articles/IMG_1691.jpg?width=700" alt="Fused glass bloom made with the Bloom mold" loading="lazy">
 <img src="https://michellefrost.com/cdn/shop/files/8EBE7CB1-5642-46BC-93AB-E82CCA5F315B.jpg?width=700" alt="Flat and standing green fused glass trees on the Standing Tree mold" loading="lazy">
+</div></div>
+
+<section class="ms-band" aria-labelledby="ms-in-h">
+<div class="ms-inner">
+<div class="ms-head">
+<p class="ms-eyebrow">What's inside</p>
+<h2 id="ms-in-h">Everything from <em>the box to the window</em></h2>
+<p class="ms-lede">Seven short modules, plus your printable mold instructions. Dip in where you need to, or start at the beginning.</p>
 </div>
-<section class="ms-note"><div class="ms-wrap">
-<div class="ph"><img src="https://michellefrost.com/cdn/shop/articles/IMG_8727.jpg?width=900" alt="Michelle Frost holding a green fused glass garden piece" loading="lazy"></div>
-<div>
-<p class="ms-eyebrow">A note from my studio</p>
-<h2 class="ms-script">Hi, I'm Michelle</h2>
-<p>I make every one of my molds by hand in my little studio in Port Alberni, on Vancouver Island. Over the years I've answered the same lovely questions again and again. How much glass do I need? Zyp or kiln wash? Why did my piece stick? So I gathered all of it into one place for you.</p>
-<p>Mold School is what I wish I'd had when I started. No jargon and no pressure, just the tips that really make a difference, shown at my kiln, step by step. Fused glass is easier than you think, and I'd love to help you get beautiful results from your very first firing.</p>
-<p class="ms-sig">XO, Michelle</p>
-</div>
-</div></section>
-<section class="ms-inside"><div class="ms-wrap">
-<div class="ms-center"><p class="ms-eyebrow">What's inside</p><h2>Everything from the box to the window</h2><p>Seven short modules, plus your printable mold instructions. Dip in where you need to, or start at the beginning.</p></div>
-<div class="ms-grid">
-<div class="ms-mod"><div class="num">1</div><h4>Getting started</h4><p>Unboxing and inspecting your mold, so you know it's ready to go.</p></div>
-<div class="ms-mod"><div class="num">2</div><h4>Prepping your mold</h4><p>Cleaning it, then choosing and applying kiln wash or Zyp.</p></div>
-<div class="ms-mod"><div class="num">3</div><h4>Loading your glass</h4><p>Choosing glass and colour, how much to use, and loading demos.</p></div>
-<div class="ms-mod"><div class="num">4</div><h4>Firing</h4><p>Tack, contour and full fuse side by side, plus your schedules explained.</p></div>
-<div class="ms-mod"><div class="num">5</div><h4>Finishing</h4><p>Unmolding, smoothing edges, and ideas for hanging and display.</p></div>
-<div class="ms-mod"><div class="num">6</div><h4>Keep creating</h4><p>Caring for your mold, when to respray, and what to make next.</p></div>
-<div class="ms-mod"><div class="num">7</div><h4>Troubleshooting</h4><p>Bubbles, thin spots, sticking and more, with the cause and the fix.</p></div>
-<div class="ms-mod hl"><div class="num">✦</div><h4>Your mold instructions</h4><p>A printable one-page sheet for each mold, with glass weights and firing schedules.</p></div>
-</div>
+<ol class="ms-mods">
+<li class="ms-mod" style="--c:#1F6F6B"><span class="ms-badge" aria-hidden="true">1</span><h3>Getting started</h3><p>Unboxing and inspecting your mold, so you know it's ready to go.</p></li>
+<li class="ms-mod" style="--c:#74863A"><span class="ms-badge" aria-hidden="true">2</span><h3>Prepping your mold</h3><p>Cleaning it, then getting it well prepped with a release agent.</p></li>
+<li class="ms-mod" style="--c:#C4572C"><span class="ms-badge" aria-hidden="true">3</span><h3>Loading your glass</h3><p>Choosing glass and colour, how much to use, and loading demos.</p></li>
+<li class="ms-mod" style="--c:#7B4B6E"><span class="ms-badge" aria-hidden="true">4</span><h3>Firing</h3><p>Tack, contour and full fuse side by side, plus your schedules explained.</p></li>
+<li class="ms-mod" style="--c:#B8575F"><span class="ms-badge" aria-hidden="true">5</span><h3>Finishing</h3><p>Unmolding, smoothing edges, and ideas for hanging and display.</p></li>
+<li class="ms-mod" style="--c:#1F6F6B"><span class="ms-badge" aria-hidden="true">6</span><h3>Keep creating</h3><p>Caring for your mold, when to re-prep, and what to make next.</p></li>
+<li class="ms-mod" style="--c:#74863A"><span class="ms-badge" aria-hidden="true">7</span><h3>Troubleshooting</h3><p>Bubbles, thin spots, sticking and more, with the cause and the fix.</p></li>
+<li class="ms-mod hl" style="--c:#C98A12"><span class="ms-badge" aria-hidden="true">✦</span><h3>Your mold instructions</h3><p>A printable one-page sheet for each mold, with glass weights and firing schedules.</p></li>
+</ol>
 <p class="ms-molds">Made for all of my molds: Wreath, Heart, Bloom, Star, Bell, Tree, Standing Tree, Snowflake, Maple Leaf and Dog Paw.</p>
-</div></section>
-<section class="ms-faq"><div class="ms-wrap">
-<div class="ms-center" style="margin-bottom:24px"><p class="ms-eyebrow">Good to know</p><h2>Your questions, answered</h2></div>
-<details><summary>Is it really free?</summary><p>Yes. Mold School is my gift to everyone who makes with my molds. No credit card and nothing to buy.</p></details>
-<details><summary>I haven't bought a mold yet. Can I still join?</summary><p>Absolutely. Come and have a look around. You'll see exactly how the molds work before you choose one.</p></details>
-<details><summary>How do I log in?</summary><p>Once you sign up, I'll email you a login link. You can also log in any time at <a href="https://community.michellefrost.com/">community.michellefrost.com</a>.</p></details>
-<details><summary>Where do I find my instruction sheet?</summary><p>Inside Mold School, open the Mold Instructions module. There's a lesson for each mold with a printable sheet you can keep by your kiln.</p></details>
-<details><summary>I'm stuck. Can I ask you?</summary><p>Of course. Email <a href="mailto:hello@michellefrost.com">hello@michellefrost.com</a> with a photo of your piece and I'll help you work out what happened.</p></details>
-</div></section>
-<section class="ms-end"><div class="ms-wrap">
-<h2 class="ms-script">Let's make something beautiful</h2>
-<p>Grab your free login and I'll see you in the studio.</p>
+<div class="ms-center"><a class="ms-btn" href="#join">Join Mold School, it's free</a></div>
+</div>
+</section>
+
+<section class="ms-band ms-sun" aria-labelledby="ms-me-h">
+<div class="ms-inner">
+<div class="ms-about">
+<div class="ms-portrait"><img src="https://michellefrost.com/cdn/shop/articles/IMG_8727.jpg?width=900" alt="Michelle Frost holding a green fused glass garden piece" width="600" height="750" loading="lazy"></div>
+<div class="ms-about-copy">
+<p class="ms-eyebrow">A note from my studio</p>
+<h2 id="ms-me-h">Hi, I'm <em>Michelle</em></h2>
+<p>I make every one of my molds by hand in my studio in Port Alberni, on Vancouver Island. Makers ask me the same great questions again and again. How much glass do I need? How do I prep my mold? Why did my piece stick? So I gathered all of the answers into one place for you.</p>
+<p>Mold School is brand new, and it's what I wish I'd had when I started. No jargon and no pressure, just the tips that really make a difference, shown at my kiln, step by step. Fused glass is easier than you think, and I'd love to help you get beautiful results from your very first firing.</p>
+<p>Michelle</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="ms-band ms-paper" aria-labelledby="ms-faq-h">
+<div class="ms-inner ms-narrow">
+<div class="ms-head">
+<p class="ms-eyebrow">Good to know</p>
+<h2 id="ms-faq-h">Your questions, answered</h2>
+</div>
+<div class="ms-faq">
+<details><summary>Is it really free?</summary><p class="ms-a">Yes. Mold School is free for everyone who makes with my molds. No credit card and nothing to buy.</p></details>
+<details><summary>I haven't bought a mold yet. Can I still join?</summary><p class="ms-a">Absolutely. Come and have a look around. You'll see exactly how the molds work before you choose one.</p></details>
+<details><summary>How do I log in?</summary><p class="ms-a">Once you sign up, I'll email you a login link. You can also log in any time at <a href="https://community.michellefrost.com/">community.michellefrost.com</a>.</p></details>
+<details><summary>Where do I find my instruction sheet?</summary><p class="ms-a">Inside Mold School, open the Mold Instructions module. There's a lesson for each mold with a printable sheet you can keep by your kiln.</p></details>
+<details><summary>Something went wrong with my piece. Where do I start?</summary><p class="ms-a">Head to the Troubleshooting module. It walks through bubbles, thin spots, sticking and more, with what causes each one and how to fix it next time.</p></details>
+</div>
+</div>
+</section>
+
+<section class="ms-band ms-dark" aria-labelledby="ms-end-h">
+<div class="ms-inner ms-narrow">
+<h2 class="ms-script" id="ms-end-h">Let's make something beautiful</h2>
+<p class="ms-lede">Grab your free login and I'll see you in the studio.</p>
 <a class="ms-btn" href="#join">Join Mold School, it's free</a>
-</div></section>
-<div class="ms-foot">Michelle Frost Handmade Glass · Port Alberni, BC · <a href="https://michellefrost.com/">michellefrost.com</a> · <a href="mailto:hello@michellefrost.com">hello@michellefrost.com</a></div>
+</div>
+</section>
+
+<footer class="ms-foot">© Michelle Frost Handmade Glass<span aria-hidden="true">·</span>Port Alberni, BC<span aria-hidden="true">·</span><a href="https://michellefrost.com/">michellefrost.com</a><span aria-hidden="true">·</span><a href="mailto:hello@michellefrost.com">hello@michellefrost.com</a></footer>
 </div>
 <script src="https://api.otherlife.com/js/form_embed.js"></script>
+
 </body></html>
